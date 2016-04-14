@@ -1,0 +1,17 @@
+*
+{
+	margin:0;
+	padding:0;
+}
+#divLogin
+{
+	text-align:center;
+	margin:0 auto;
+	padding:200px;
+	width:600px;
+	height:400px;
+}
+.user
+{
+	margin:10px;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search</title>
+	<script type="text/javascript"
+			src="jQuery/jquery-2.2.2.js">
+	</script>
+	<link rel="stylesheet" type="text/css" 
+		href="css/Search.css" />
+	<script type="text/javascript"
+			src="script/Search.js">
+	</script>
+</head>
+<body>
+	<div id="divSearch">
+		<h3>学籍查询</h3>
+		<div class="content">
+			<div>课程：<input id="txtCourse" type="text" class="course"/></div>
+			<div>教师：<input id="txtTeacher" type="text" class="course"/></div>
+		</div>
+		<div class="btnCenter">
+			<input id="search" type="submit" value="查询" class="btn"/>
+			&nbsp;&nbsp;
+			<input id="reset" type="reset" value="取消" class="btn"/>
+		</div>
+		<div id="details">
+			<ul id="title" class="title">
+				<li><a href="#" target="_blank" onmouseover="javascript:q(1)">个人信息</a></li>
+				<li><a href="#" target="_blank" onmouseover="javascript:q(2)">选课管理</a></li>
+				<li><a href="#" target="_blank" onmouseover="javascript:q(3)">成绩查询</a></li>
+			</ul>
+			<div id="con1" class="con" style="display:block;">
+				<ul>
+					<li><a href="">姓名</a></li>
+					<li><a href="">性别</a></li>
+					<li><a href="">籍贯</a></li>
+					<li><a href="">出生年月</a></li>
+				</ul>
+			</div>
+			<div id="con2" class="con" style="display:none;">
+				<ul>
+					<li><a href="">开始选课</a></li>
+					<li><a href="">选课结果</a></li>
+				</ul>
+			</div>
+			<div id="con3" class="con" style="display:none;">
+				<ul>
+					<li><a href="">语文</a></li>
+					<li><a href="">数学</a></li>
+					<li><a href="">英语</a></li>
+				</ul>
+			</div>
+		</div>
+		<span id="divMsg" class="clsTip"></span>
+	</div>
+</body>
+</html>
