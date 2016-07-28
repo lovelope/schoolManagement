@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,com.studentsystem.*;" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,com.studentsystem.*" pageEncoding="GBK"%>
 <%!  List<Course> Courseinfo=new ArrayList<Course>();
      Course temp;
 %>

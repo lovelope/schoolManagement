@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession;" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession" pageEncoding="GBK"%>
 <%! String StudentNo;
     String Name;
     String CardNo;

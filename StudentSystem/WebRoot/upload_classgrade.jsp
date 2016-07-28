@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession,com.studentsystem.*;" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession,com.studentsystem.*" pageEncoding="gb2312"%>
 <%!
    String username;   
    List<Student> Studentinfo=new ArrayList<Student>();
