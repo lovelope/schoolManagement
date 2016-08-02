@@ -1,8 +1,8 @@
 package com.studentsystem;
 /**
- * ÀÏÊ¦µÄjavabean£¬±£´æºÍÌáÈ¡ÀÏÊ¦µÄÏà¹ØĞÅÏ¢
+ * è€å¸ˆçš„javabeanï¼Œä¿å­˜å’Œæå–è€å¸ˆçš„ç›¸å…³ä¿¡æ¯
  * @version 1.0
- * @author Administrator
+ * 
  */
 public class Teacher {
   private String TeacherNo;

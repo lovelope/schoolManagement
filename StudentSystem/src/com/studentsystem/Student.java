@@ -1,8 +1,8 @@
 package com.studentsystem;
 /**
- * 学生的javabean，用来保存和获取学生的各种信息，在其他类中与Arraylist<>使用
+ * 瀛︾敓鐨刯avabean锛岀敤鏉ヤ繚瀛樺拰鑾峰彇瀛︾敓鐨勫悇绉嶄俊鎭紝鍦ㄥ叾浠栫被涓笌Arraylist<>浣跨敤
  * @version 1.0
- * @author LBJ
+ * 
  */
 public class Student {
   private String StudentNo;

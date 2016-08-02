@@ -19,10 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 /**
- * ÓÃÀ´¼ì²éµÇÂ¼µÄservlet£¬¶ÔÇëÇóµÇÂ¼ÕßµÄÉí·İ½øĞĞÑéÖ¤£¬¶Ô³É¹¦µÄµÇÂ¼Õß°´ÕÕÉí·İµÄ²»Í¬
- * ×ªÏò²»Í¬µÄÒ³Ãæ
+ * ç”¨æ¥æ£€æŸ¥ç™»å½•çš„servletï¼Œå¯¹è¯·æ±‚ç™»å½•è€…çš„èº«ä»½è¿›è¡ŒéªŒè¯ï¼Œå¯¹æˆåŠŸçš„ç™»å½•è€…æŒ‰ç…§èº«ä»½çš„ä¸åŒ
+ * è½¬å‘ä¸åŒçš„é¡µé¢
  * @version 1.0
- * @author LBJ
+ * 
  *
  */
 public class logincheck extends HttpServlet {
@@ -33,38 +33,38 @@ public class logincheck extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
         try {
-        	//Á¬½ÓÊı¾İ¿â
+        	//è¿æ¥æ•°æ®åº“
 			Context initCtx=new InitialContext();
 			Context encCtx=(Context)initCtx.lookup("java:comp/env");
 			DataSource ds=(DataSource)encCtx.lookup("jdbc/mssql2014");
 			Connection con=ds.getConnection();
-			//´Ó±íµ¥ÖĞÌáÈ¡µÇÂ¼ÕßµÄid£¬ÃÜÂë£¬ÀàĞÍ
+			//ä»è¡¨å•ä¸­æå–ç™»å½•è€…çš„idï¼Œå¯†ç ï¼Œç±»å‹
 			String username=request.getParameter("UserID");
 			String password=request.getParameter("UserPWD");
 			String kind=request.getParameter("Kind");
-			//½¨Á¢sessionÓÃÀ´³Ö¾Ã»¯
+			//å»ºç«‹sessionç”¨æ¥æŒä¹…åŒ–
 			HttpSession session=request.getSession();
 			session.setAttribute("userid", username);
 			session.setAttribute("UserPWD", password);
 			session.setAttribute("UserName", username);	
-			//²éÑ¯Êı¾İ¿âÖĞuserinfo±íÀ´²é¿´ÊÇ·ñÓĞ¸ÃÓÃ»§
+			//æŸ¥è¯¢æ•°æ®åº“ä¸­userinfoè¡¨æ¥æŸ¥çœ‹æ˜¯å¦æœ‰è¯¥ç”¨æˆ·
 			PreparedStatement ps=con.prepareStatement("SELECT * FROM UserInfo WHERE Name=? and Password=? and Kind=?");
 			ps.setString(1,username);
 			ps.setString(2,password);
 			ps.setString(3,kind);
 			ResultSet rs=ps.executeQuery();
 			
-			boolean flag=rs.next();//×¢Òâ´Ë´¦²»¿ÉÔÙÌõ¼şÓï¾äifÖĞÊ¹ÓÃrs.next()£¬ÒòÎª»áÊÇ½á¹û¼¯Ö¸ÕëÏÂÒÆ
+			boolean flag=rs.next();//æ³¨æ„æ­¤å¤„ä¸å¯å†æ¡ä»¶è¯­å¥ifä¸­ä½¿ç”¨rs.next()ï¼Œå› ä¸ºä¼šæ˜¯ç»“æœé›†æŒ‡é’ˆä¸‹ç§»
 			
             if(flag&&kind.equals("0"))	
             {	
-            	//½øÈë¹ÜÀíÔ±ĞÅÏ¢½çÃæ
+            	//è¿›å…¥ç®¡ç†å‘˜ä¿¡æ¯ç•Œé¢
             	request.setAttribute("success",username+password);
             	request.getRequestDispatcher("/Admin.jsp").forward(request, response);
             }
             else if(flag&&kind.equals("1"))	
             {	
-            	//½øÈë½ÌÊ¦ĞÅÏ¢½çÃæ
+            	//è¿›å…¥æ•™å¸ˆä¿¡æ¯ç•Œé¢
             	request.setAttribute("success",username+password);
             	List<Student> MyStudent=new ArrayList<Student>();
             	session.setAttribute("MyStudentinfo",MyStudent);
@@ -72,16 +72,16 @@ public class logincheck extends HttpServlet {
             }
             else if(flag&&kind.equals("2"))	
             {	
-            	//½øÈëÑ§ÉúĞÅÏ¢½çÃæ
+            	//è¿›å…¥å­¦ç”Ÿä¿¡æ¯ç•Œé¢
             	request.setAttribute("success",username+password);
             	request.getRequestDispatcher("/index.jsp").forward(request, response);
             }
             else 
             {
-            	session.setAttribute("message","ÓÃ»§Ãû²»´æÔÚ»òÄúÑ¡ÔñµÄÉí·İ´íÎó");
+            	session.setAttribute("message","ç”¨æˆ·åä¸å­˜åœ¨æˆ–æ‚¨é€‰æ‹©çš„èº«ä»½é”™è¯¯");
             	request.getRequestDispatcher("/Login.jsp").forward(request, response);	
             }
-            //B/SÄ£Ê½ÏÂÊı¾İ¿âÁ¬½ÓÓ¦Îª¶ÌÁ¬½Ó£¬Ğè¼°Ê±¶Ï¿ªÊı¾İ¿âÁ¬½Ó
+            //B/Sæ¨¡å¼ä¸‹æ•°æ®åº“è¿æ¥åº”ä¸ºçŸ­è¿æ¥ï¼Œéœ€åŠæ—¶æ–­å¼€æ•°æ®åº“è¿æ¥
 			rs.close();
 			ps.close();
 			con.close();

@@ -8,9 +8,9 @@ import javax.sql.DataSource;
 import javax.naming.*;
 import java.util.ArrayList;
 /**
- * ¸ºÔğÊı¾İ¿â´¦Àí£¬°üÀ¨¶Ô½ÌÊ¦£¬¿Î³Ì£¬Ñ§ÉúµÄĞÅÏ¢µÄÏà¹Ø²Ù×÷
+ * è´Ÿè´£æ•°æ®åº“å¤„ç†ï¼ŒåŒ…æ‹¬å¯¹æ•™å¸ˆï¼Œè¯¾ç¨‹ï¼Œå­¦ç”Ÿçš„ä¿¡æ¯çš„ç›¸å…³æ“ä½œ
  * @version 1.0
- * @author LBJ
+ * 
  */
 public class TestDB {
 
@@ -18,7 +18,7 @@ public class TestDB {
 	PreparedStatement ps=null;
 	CallableStatement cs=null;
 	String cas="{call course_student_sum(?, ?)}"; 
-	//»ñÈ¡Êı¾İ¿âÁ¬½Ó
+	//è·å–æ•°æ®åº“è¿æ¥
 	private Connection getConnection()
 	{
 		Connection con;
@@ -43,7 +43,7 @@ public class TestDB {
 	{
 		
 	}
-	//¸ºÔğÑ§ÉúÈ¨ÏŞÄÚµÄĞŞ¸ÄÑ§Éú¸öÈËĞÅÏ¢£¬¼´Ñ§ÉúÖ»ÔÊĞíĞŞ¸ÄĞÕÃû£¬µç»°£¬µç×ÓÓÊ¼ş£¬µÇÂ¼ÃÜÂë
+	//è´Ÿè´£å­¦ç”Ÿæƒé™å†…çš„ä¿®æ”¹å­¦ç”Ÿä¸ªäººä¿¡æ¯ï¼Œå³å­¦ç”Ÿåªå…è®¸ä¿®æ”¹å§“åï¼Œç”µè¯ï¼Œç”µå­é‚®ä»¶ï¼Œç™»å½•å¯†ç 
     public boolean Studenwork(String name,String phone,String Email,String pwd)
     {	
     	 try {
@@ -75,10 +75,10 @@ public class TestDB {
 		  }
 	
     }
-    //Ñ¡¿Î£¬È¡ÏûÑ¡¿Î²Ù×÷
+    //é€‰è¯¾ï¼Œå–æ¶ˆé€‰è¯¾æ“ä½œ
     public float Coursework(int do_what,String CourseNo,String StudentNo)
     {
-    	//Ñ¡¿Î²Ù×÷
+    	//é€‰è¯¾æ“ä½œ
     	if(do_what==0)
     	{
     		try {
@@ -112,7 +112,7 @@ public class TestDB {
 			}
 			
     	}
-    	//È¡ÏûÑ¡¿Î
+    	//å–æ¶ˆé€‰è¯¾
     	else if(do_what==1)
     	{
     		try {
@@ -141,7 +141,7 @@ public class TestDB {
     	}
     	else return -1;
     }
-    //½ÌÊ¦Â¼Èë»òĞŞ¸Ä³É¼¨
+    //æ•™å¸ˆå½•å…¥æˆ–ä¿®æ”¹æˆç»©
     public boolean Teacherwork(String StudentNo,String CourseName,float coursegrade)
     {
     	

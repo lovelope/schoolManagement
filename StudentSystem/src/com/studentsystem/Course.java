@@ -1,8 +1,8 @@
 package com.studentsystem;
 /**
- * 课程的javabean,用来保存和提取课程的相关信息
+ * 璇剧▼鐨刯avabean,鐢ㄦ潵淇濆瓨鍜屾彁鍙栬绋嬬殑鐩稿叧淇℃伅
  * @version 1.0
- * @author LBJ
+ * 
  */
 public class Course {
     private String CourseNo;

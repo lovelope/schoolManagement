@@ -20,9 +20,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 /**
- * ÓÃÀ´´¦ÀíAJAXÇëÇó£¬²¢¹¹½¨XMLÎÄ¼ş£¬ÓÃÀ´´«µİĞÅÏ¢
+ * ç”¨æ¥å¤„ç†AJAXè¯·æ±‚ï¼Œå¹¶æ„å»ºXMLæ–‡ä»¶ï¼Œç”¨æ¥ä¼ é€’ä¿¡æ¯
  * @version 1.0
- * @author LBJ
+ * 
  *
  */
 public class autoComplete extends HttpServlet {
@@ -35,18 +35,18 @@ public class autoComplete extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			//½¨Á¢Êı¾İ¿âÁ¬½Ó
+			//å»ºç«‹æ•°æ®åº“è¿æ¥
 			Context initCtx=new InitialContext();
 			Context encCtx=(Context)initCtx.lookup("java:comp/env");
 			DataSource ds=(DataSource)encCtx.lookup("jdbc/mssql2014");
 			Connection con=ds.getConnection();
 			Statement st=null;
 			ResultSet rs=null;
-			//»ñÈ¡session£¬ÓÃÀ´´ÓÆäÖĞ¶ÁÈ¡ÓÃ»§ÃûÀ´Íê³ÉÊı¾İ¿â²éÑ¯
+			//è·å–sessionï¼Œç”¨æ¥ä»å…¶ä¸­è¯»å–ç”¨æˆ·åæ¥å®Œæˆæ•°æ®åº“æŸ¥è¯¢
 			HttpSession session=request.getSession();
-			//ÉèÖÃ±àÂë·½Ê½
+			//è®¾ç½®ç¼–ç æ–¹å¼
 			request.setCharacterEncoding("UTF-8");
-			//ÒÔÏÂ¾ùÎª´ÓAJAX»ñÈ¡´«ËÍÀ´µÄÊı¾İ
+			//ä»¥ä¸‹å‡ä¸ºä»AJAXè·å–ä¼ é€æ¥çš„æ•°æ®
 			String name=request.getParameter("name");
 			String action=request.getParameter("action");
 			String username=request.getParameter("username");
@@ -68,7 +68,7 @@ public class autoComplete extends HttpServlet {
 			String changecno_classinfo=request.getParameter("changecno");
 			String changecname_classinfo=request.getParameter("changecname");
 			String changeacademy_classinfo=request.getParameter("changeacademy");
-			//ÔÚÒÔ¹ÜÀíÔ±½ÇÉ«´¦ÀíĞŞ¸ÄĞÅÏ¢Ê±£¬±£Ö¤Êı¾İĞÅÏ¢ÓĞĞ§²»Îª¿Õ£¬·ñÔò»á²úÉúÒì³£
+			//åœ¨ä»¥ç®¡ç†å‘˜è§’è‰²å¤„ç†ä¿®æ”¹ä¿¡æ¯æ—¶ï¼Œä¿è¯æ•°æ®ä¿¡æ¯æœ‰æ•ˆä¸ä¸ºç©ºï¼Œå¦åˆ™ä¼šäº§ç”Ÿå¼‚å¸¸
 			if(changename!=null&&changesex!=null&&changesubject!=null&&changeacademy!=null&&changesex!=null&&changecardnumber!=null&&changeprince!=null&&changebirthday!=null&&changeemail!=null)
 			{
 				changename=new String(request.getParameter("changename").getBytes("ISO8859_1"));
@@ -77,25 +77,25 @@ public class autoComplete extends HttpServlet {
 			    changeacademy=new String(request.getParameter("changeacademy").getBytes("ISO8859_1"));
 			    changeprince=new String(request.getParameter("changeprince").getBytes("ISO8859_1"));    
 			}
-			//Õâ¾äname×ª»»ºÜÖØÒª,±àÂëµÄ²»Í¬µ¼ÖÂÒªÕâÑùĞ´£¬²Å¿ÉÒÔ»ñµÃÕıÈ·µÄºº×Ö
+			//è¿™å¥nameè½¬æ¢å¾ˆé‡è¦,ç¼–ç çš„ä¸åŒå¯¼è‡´è¦è¿™æ ·å†™ï¼Œæ‰å¯ä»¥è·å¾—æ­£ç¡®çš„æ±‰å­—
 			if(name!=null)
 			    name=new String(request.getParameter("name").getBytes("ISO8859_1"));
 			if(username!=null)
 			    username=new String(request.getParameter("username").getBytes("ISO8859_1"));
-			System.out.println("ÓÃ»§ÃûÊÇ"+username);
-			System.out.println("¿ÎÃû:"+name+" action:"+action);
+			System.out.println("ç”¨æˆ·åæ˜¯"+username);
+			System.out.println("è¯¾å:"+name+" action:"+action);
 			String kind=request.getParameter("kind");
 			System.out.println("Kind:"+kind);
-			//ÉèÖÃresponseµÄ¸ñÊ½
+			//è®¾ç½®responseçš„æ ¼å¼
 			response.setContentType("text/xml;charset=UTF-8");
 			response.setHeader("Cache-Control", "no-cache");
-            //»ñµÃÊä³ö¶ÔÏó£¬ÓÃÀ´¹¹½¨XMLÎÄ¼ş,¹©ÇëÇóÒ³Ãæ½âÎö
+            //è·å¾—è¾“å‡ºå¯¹è±¡ï¼Œç”¨æ¥æ„å»ºXMLæ–‡ä»¶,ä¾›è¯·æ±‚é¡µé¢è§£æ
 			PrintWriter out = response.getWriter();
-			out.println("<response>");//¹¹½¨XMLÎÄ¼şÍ·£¬XMLÎÄ¼ş°üº¬Ñ§ÉúÏêÏ¸Ñ§¼®ĞÅÏ¢
-			//Ñ§Éú½ÇÉ«²éÑ¯³É¼¨Ê±£¬ÊµÏÖÄÚÈİ×Ô¶¯²¹È«µÄ¹¦ÄÜ£¬²úÉúÏÂ»¬²Ëµ¥£¨ÀàËÆ°Ù¶ÈËÑË÷£©
+			out.println("<response>");//æ„å»ºXMLæ–‡ä»¶å¤´ï¼ŒXMLæ–‡ä»¶åŒ…å«å­¦ç”Ÿè¯¦ç»†å­¦ç±ä¿¡æ¯
+			//å­¦ç”Ÿè§’è‰²æŸ¥è¯¢æˆç»©æ—¶ï¼Œå®ç°å†…å®¹è‡ªåŠ¨è¡¥å…¨çš„åŠŸèƒ½ï¼Œäº§ç”Ÿä¸‹æ»‘èœå•ï¼ˆç±»ä¼¼ç™¾åº¦æœç´¢ï¼‰
 			if("match".equals(action))
 			{
-				 //Êı¾İ¿â²éÑ¯Óï¾ä±íÊ¾Ê¹ÓÃLIKEÀ´½øĞĞ¹Ø¼ü×ÖÆ¥Åä
+				 //æ•°æ®åº“æŸ¥è¯¢è¯­å¥è¡¨ç¤ºä½¿ç”¨LIKEæ¥è¿›è¡Œå…³é”®å­—åŒ¹é…
 			     String query="SELECT CourseName FROM CourseInfo WHERE CourseName LIKE'"+name+"%'";
 				 st=con.createStatement();
 				 rs=st.executeQuery(query);
@@ -107,7 +107,7 @@ public class autoComplete extends HttpServlet {
 				 rs.close();
 				 con.close();
 			}
-			//´¦ÀíÒÔÑ§Éú½ÇÉ«´¦Àí²éÑ¯³É¼¨ÊÂ¼ş
+			//å¤„ç†ä»¥å­¦ç”Ÿè§’è‰²å¤„ç†æŸ¥è¯¢æˆç»©äº‹ä»¶
 			else if("search".equals(action))
 			{  	
 				PreparedStatement ps=null;
@@ -130,24 +130,24 @@ public class autoComplete extends HttpServlet {
 				rs.close();
 				con.close();
 			}
-			//ÒÔ¹ÜÀíÔ±½ÇÉ«´¦Àí²éÑ¯Ñ§ÉúĞÅÏ¢ÊÂ¼ş
+			//ä»¥ç®¡ç†å‘˜è§’è‰²å¤„ç†æŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯äº‹ä»¶
 			else if("search_student".equals(action))
 			{  
-				//·ÖÎªÈıÖÖ±ê×¼²éÑ¯£º°´Ñ§ºÅ£¬°´ĞÕÃû£¬°´°à¼¶ºÅ
+				//åˆ†ä¸ºä¸‰ç§æ ‡å‡†æŸ¥è¯¢ï¼šæŒ‰å­¦å·ï¼ŒæŒ‰å§“åï¼ŒæŒ‰ç­çº§å·
 				PreparedStatement ps=null;
-				//°´Ñ§ºÅ
+				//æŒ‰å­¦å·
 			    if("0".equals(kind))
 			    {	
 				   ps=con.prepareStatement("SELECT StudentInfo.StudentNo,StudentInfo.Name,StudentInfo.Phone,StudentInfo.Sex,StudentInfo.Subject,StudentInfo.ClassNo,StudentInfo.Academy,StudentInfo.CardNumber,StudentInfo.Prince,StudentInfo.BirthDay,StudentInfo.Email,UserInfo.Password FROM StudentInfo,UserInfo WHERE  StudentInfo.StudentNo=UserInfo.Name AND StudentInfo.StudentNo=?");
 				   ps.setString(1,name);
 			    }
-			    //°´ĞÕÃû
+			    //æŒ‰å§“å
 			    else if("1".equals(kind))
 			    {
 				   ps=con.prepareStatement("SELECT StudentInfo.StudentNo,StudentInfo.Name,StudentInfo.Phone,StudentInfo.Sex,StudentInfo.Subject,StudentInfo.ClassNo,StudentInfo.Academy,StudentInfo.CardNumber,StudentInfo.Prince,StudentInfo.BirthDay,StudentInfo.Email,UserInfo.Password FROM StudentInfo,UserInfo WHERE  StudentInfo.StudentNo=UserInfo.Name AND StudentInfo.Name=?");
 				   ps.setString(1,name);
 			    }
-			    //°´°à¼¶ºÅ
+			    //æŒ‰ç­çº§å·
 			    else if("2".equals(kind))
 			    { 
 				   ps=con.prepareStatement("SELECT StudentInfo.StudentNo,StudentInfo.Name,StudentInfo.Phone,StudentInfo.Sex,StudentInfo.Subject,StudentInfo.ClassNo,StudentInfo.Academy,StudentInfo.CardNumber,StudentInfo.Prince,StudentInfo.BirthDay,StudentInfo.Email,UserInfo.Password FROM StudentInfo,UserInfo WHERE  StudentInfo.StudentNo=UserInfo.Name AND StudentInfo.ClassNo=?");
@@ -157,35 +157,35 @@ public class autoComplete extends HttpServlet {
 			    {
 				   ps=con.prepareStatement("SELECT StudentInfo.StudentNo,StudentInfo.Name,StudentInfo.Phone,StudentInfo.Sex,StudentInfo.Subject,StudentInfo.ClassNo,StudentInfo.Academy,StudentInfo.CardNumber,StudentInfo.Prince,StudentInfo.BirthDay,StudentInfo.Email,UserInfo.Password FROM StudentInfo,UserInfo WHERE  StudentInfo.StudentNo=UserInfo.Name");
 			    }
-			   //Ö´ĞĞ²éÑ¯
+			   //æ‰§è¡ŒæŸ¥è¯¢
                rs=ps.executeQuery();
-			   //¹¹½¨XMLÎÄ¼ş
+			   //æ„å»ºXMLæ–‡ä»¶
 			   while(rs.next())
 			   {
-					out.println("<studentno>"+rs.getString(1)+"</studentno>");//Ñ§ºÅ
-					out.println("<studentname>"+rs.getString(2)+"</studentname>");//Ñ§ÉúĞÕÃû
-					out.println("<studentphone>"+rs.getString(3)+"</studentphone>");//µç»°
-					out.println("<studentsex>"+rs.getString(4)+"</studentsex>");//ĞÔ±ğ
-					out.println("<studentsubject>"+rs.getString(5)+"</studentsubject>");//×¨Òµ
-					out.println("<studentclass>"+rs.getString(6)+"</studentclass>");//°à¼¶
-					out.println("<studentacademy>"+rs.getString(7)+"</studentacademy>");//Ñ§Ôº
-					out.println("<studentcardnumber>"+rs.getString(8)+"</studentcardnumber>");//Éí·İÖ¤
-					out.println("<studentprince>"+rs.getString(9)+"</studentprince>");//¼®¹á
-					out.println("<studentbirthday>"+rs.getString(10)+"</studentbirthday>");//³öÉúÄêÔÂ
-					out.println("<studentemail>"+rs.getString(11)+"</studentemail>");//Ñ§ÉúÓÊ¼ş
-					out.println("<studentpwd>"+rs.getString(12)+"</studentpwd>");//Ñ§ÉúÃÜÂë
+					out.println("<studentno>"+rs.getString(1)+"</studentno>");//å­¦å·
+					out.println("<studentname>"+rs.getString(2)+"</studentname>");//å­¦ç”Ÿå§“å
+					out.println("<studentphone>"+rs.getString(3)+"</studentphone>");//ç”µè¯
+					out.println("<studentsex>"+rs.getString(4)+"</studentsex>");//æ€§åˆ«
+					out.println("<studentsubject>"+rs.getString(5)+"</studentsubject>");//ä¸“ä¸š
+					out.println("<studentclass>"+rs.getString(6)+"</studentclass>");//ç­çº§
+					out.println("<studentacademy>"+rs.getString(7)+"</studentacademy>");//å­¦é™¢
+					out.println("<studentcardnumber>"+rs.getString(8)+"</studentcardnumber>");//èº«ä»½è¯
+					out.println("<studentprince>"+rs.getString(9)+"</studentprince>");//ç±è´¯
+					out.println("<studentbirthday>"+rs.getString(10)+"</studentbirthday>");//å‡ºç”Ÿå¹´æœˆ
+					out.println("<studentemail>"+rs.getString(11)+"</studentemail>");//å­¦ç”Ÿé‚®ä»¶
+					out.println("<studentpwd>"+rs.getString(12)+"</studentpwd>");//å­¦ç”Ÿå¯†ç 
 			   }
 			   rs.close();
-			   con.close();//B/SÏÂ²ÉÓÃÊı¾İ¿â¶ÌÁ¬½Ó£¬²éÑ¯Íê³Éºó¼´¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+			   con.close();//B/Sä¸‹é‡‡ç”¨æ•°æ®åº“çŸ­è¿æ¥ï¼ŒæŸ¥è¯¢å®Œæˆåå³å…³é—­æ•°æ®åº“è¿æ¥
 			   
 			}
-			//¹ÜÀíÔ±½ÇÉ«É¾³ıÑ§ÉúĞÅÏ¢
+			//ç®¡ç†å‘˜è§’è‰²åˆ é™¤å­¦ç”Ÿä¿¡æ¯
 			else if("delete".equals(action))
 			{
 				PreparedStatement ps=null;
 				PreparedStatement ps_user=null;
-				System.out.println("ÒªÉ¾³ıµÄÊÇ"+name);
-				//¹¹½¨É¾³ıÓï¾ä
+				System.out.println("è¦åˆ é™¤çš„æ˜¯"+name);
+				//æ„å»ºåˆ é™¤è¯­å¥
 				ps=con.prepareStatement("DELETE  FROM StudentInfo WHERE StudentNo=?");  
 				ps.setString(1,name);
 				ps.execute();
@@ -194,15 +194,15 @@ public class autoComplete extends HttpServlet {
 				ps_user.execute();
 				con.close();
 			}
-			//¹ÜÀíÔ±½ÇÉ«ĞŞ¸ÄÑ§ÉúĞÅÏ¢
+			//ç®¡ç†å‘˜è§’è‰²ä¿®æ”¹å­¦ç”Ÿä¿¡æ¯
 			else if("change".equals(action))
 			{
 				PreparedStatement ps=null;
 				PreparedStatement ps_user=null;
-				PreparedStatement ps_check=null;//¼ì²é²åÈëÑ§ÉúĞÅÏ¢ÖĞµÄ°à¼¶ÊÇ·ñÔÚClassInfoÖĞ´æÔÚ
+				PreparedStatement ps_check=null;//æ£€æŸ¥æ’å…¥å­¦ç”Ÿä¿¡æ¯ä¸­çš„ç­çº§æ˜¯å¦åœ¨ClassInfoä¸­å­˜åœ¨
 				ResultSet rs_check=null;
-				System.out.println("Òª¸ü¸ÄµÄÊÇ "+name+" changename to "+changename+" changeno to "+changeno+" changephone to "+changephone+" changesex to "+changesex+" changeclassto "+changeclass+" changesubject to "+changesubject+" changeacademy to "+changeacademy+" changepwd to "+changepwd);
-				//ÏÈ¹¹½¨²éÑ¯Óï¾ä£¬¼ì²éĞŞ¸ÄµÄ°à¼¶ºÅÊÇ·ñ´æÔÚ
+				System.out.println("è¦æ›´æ”¹çš„æ˜¯ "+name+" changename to "+changename+" changeno to "+changeno+" changephone to "+changephone+" changesex to "+changesex+" changeclassto "+changeclass+" changesubject to "+changesubject+" changeacademy to "+changeacademy+" changepwd to "+changepwd);
+				//å…ˆæ„å»ºæŸ¥è¯¢è¯­å¥ï¼Œæ£€æŸ¥ä¿®æ”¹çš„ç­çº§å·æ˜¯å¦å­˜åœ¨
 				ps_check=con.prepareStatement("SELECT * FROM ClassInfo WHERE ClassNo=?");
 				ps_check.setString(1,changeclass);
 				rs_check=ps_check.executeQuery();
@@ -225,23 +225,23 @@ public class autoComplete extends HttpServlet {
 				}
 				else 
 				{
-					//Ìí¼ÓµÄÑ§ÉúµÄ°à¼¶²»´æÔÚ
-					out.println("<message>"+"ĞŞ¸ÄÊ§°Ü£¡Ô­Òò£ºĞŞ¸ÄµÄ°à¼¶²»´æÔÚ£¡"+"</message>");
+					//æ·»åŠ çš„å­¦ç”Ÿçš„ç­çº§ä¸å­˜åœ¨
+					out.println("<message>"+"ä¿®æ”¹å¤±è´¥ï¼åŸå› ï¼šä¿®æ”¹çš„ç­çº§ä¸å­˜åœ¨ï¼"+"</message>");
 				}
 				rs_check.close();
 				con.close();
 			}
-			//¹ÜÀíÔ±½ÇÉ«Ìí¼ÓÑ§ÉúĞÅÏ¢
+			//ç®¡ç†å‘˜è§’è‰²æ·»åŠ å­¦ç”Ÿä¿¡æ¯
 			else if("add".equals(action))
 			{
 				PreparedStatement ps=null;
-				PreparedStatement ps_user=null;//Ìí¼ÓÈëUserInfo±íÖĞ
-				PreparedStatement ps_check_class=null;//¼ì²é²åÈëÑ§ÉúĞÅÏ¢ÖĞµÄ°à¼¶ÊÇ·ñÔÚClassInfoÖĞ´æÔÚ
-				PreparedStatement ps_check_sno=null;//¼ì²éÌí¼ÓµÄÑ§ÉúÊÇ·ñ´æÔÚ
+				PreparedStatement ps_user=null;//æ·»åŠ å…¥UserInfoè¡¨ä¸­
+				PreparedStatement ps_check_class=null;//æ£€æŸ¥æ’å…¥å­¦ç”Ÿä¿¡æ¯ä¸­çš„ç­çº§æ˜¯å¦åœ¨ClassInfoä¸­å­˜åœ¨
+				PreparedStatement ps_check_sno=null;//æ£€æŸ¥æ·»åŠ çš„å­¦ç”Ÿæ˜¯å¦å­˜åœ¨
 				ResultSet rs_check_class=null;
 				ResultSet rs_check_sno=null;
-				System.out.println("ÒªÌí¼ÓµÄÊÇ "+" changename to "+changename+" changeno to "+changeno+" changephone to "+changephone+" changesex to "+changesex+" changeclassto "+changeclass+" changesubject to "+changesubject+" changeacademy to "+changeacademy+" changepwd to "+changepwd);
-				//ÏÈ¼ì²éÌí¼ÓÑ§ÉúĞÅÏ¢µÄ°à¼¶ºÅÊÇ·ñ´æÔÚ
+				System.out.println("è¦æ·»åŠ çš„æ˜¯ "+" changename to "+changename+" changeno to "+changeno+" changephone to "+changephone+" changesex to "+changesex+" changeclassto "+changeclass+" changesubject to "+changesubject+" changeacademy to "+changeacademy+" changepwd to "+changepwd);
+				//å…ˆæ£€æŸ¥æ·»åŠ å­¦ç”Ÿä¿¡æ¯çš„ç­çº§å·æ˜¯å¦å­˜åœ¨
 				ps_check_class=con.prepareStatement("SELECT * FROM ClassInfo WHERE ClassNo=?");
 				ps_check_class.setString(1,changeclass);
 				rs_check_class=ps_check_class.executeQuery();
@@ -252,7 +252,7 @@ public class autoComplete extends HttpServlet {
 				{
 					if(!rs_check_sno.next())
 					{
-						out.println("<message>"+"#"+"</message>");//±íÊ¾Ìí¼ÓÕı³£
+						out.println("<message>"+"#"+"</message>");//è¡¨ç¤ºæ·»åŠ æ­£å¸¸
 					    ps=con.prepareStatement("INSERT INTO StudentInfo(StudentNo,Name,Phone,Sex,Subject,ClassNo,Academy,CardNumber,Prince,Birthday,Email) VALUES (?,?,?,?,?,?,?,?,?,?,?)");  
 					    ps.setString(1,changeno);
 					    ps.setString(2,changename);
@@ -273,14 +273,14 @@ public class autoComplete extends HttpServlet {
 					}
 					else 
 					{
-						//Ìí¼ÓµÄÑ§ÉúµÄ°à¼¶²»´æÔÚ
-						out.println("<message>"+"Ìí¼ÓÊ§°Ü£¡Ô­Òò£ºÌí¼ÓÑ§ÉúÒÑ´æÔÚ£¡"+"</message>");
+						//æ·»åŠ çš„å­¦ç”Ÿçš„ç­çº§ä¸å­˜åœ¨
+						out.println("<message>"+"æ·»åŠ å¤±è´¥ï¼åŸå› ï¼šæ·»åŠ å­¦ç”Ÿå·²å­˜åœ¨ï¼"+"</message>");
 					}		
 				}
 				else
 				{
-					//Ìí¼ÓµÄÑ§ÉúµÄ°à¼¶²»´æÔÚ
-					out.println("<message>"+"Ìí¼ÓÊ§°Ü£¡Ô­Òò£ºÌí¼Ó°à¼¶²»´æÔÚ£¡"+"</message>");
+					//æ·»åŠ çš„å­¦ç”Ÿçš„ç­çº§ä¸å­˜åœ¨
+					out.println("<message>"+"æ·»åŠ å¤±è´¥ï¼åŸå› ï¼šæ·»åŠ ç­çº§ä¸å­˜åœ¨ï¼"+"</message>");
 				}
 				rs_check_class.close();
 				rs_check_sno.close();
@@ -288,7 +288,7 @@ public class autoComplete extends HttpServlet {
 				ps_check_sno.close();
 				con.close();
 			}
-			//½ÌÊ¦½ÇÉ«ÊµÏÖËÑË÷¿Î³Ì¹Ø¼ü×Ö²¹È«
+			//æ•™å¸ˆè§’è‰²å®ç°æœç´¢è¯¾ç¨‹å…³é”®å­—è¡¥å…¨
 			else if("teachermatch".equals(action))
 			{
 				 String query="SELECT CourseName FROM CourseInfo WHERE CourseName LIKE'"+name+"%'";
@@ -303,7 +303,7 @@ public class autoComplete extends HttpServlet {
 				 rs.close();
 				 con.close();
 			}
-			//½ÌÊ¦½ÇÉ«ÊµÏÖ²éÑ¯¿Î³Ì
+			//æ•™å¸ˆè§’è‰²å®ç°æŸ¥è¯¢è¯¾ç¨‹
 			else if("search_course".equals(action))
 			{
 			   PreparedStatement ps=null;   
@@ -312,18 +312,18 @@ public class autoComplete extends HttpServlet {
 			   rs=ps.executeQuery();
 			   while(rs.next())
 			   {
-					out.println("<courseno>"+rs.getString(1)+"</courseno>");//¿Î³ÌºÅ
-					out.println("<coursename>"+rs.getString(2)+"</coursename>");//¿Î³ÌÃû
-					out.println("<cst>"+rs.getString(3)+"</cst>");//¿ÎÊ±
-					out.println("<grade>"+rs.getString(4)+"</grade>");//Ñ§·Ö
-					out.println("<term>"+rs.getString(5)+"</term>");//¿ª¿ÎÑ§ÆÚ
-					out.println("<cwt>"+rs.getString(6)+"</cwt>");//ÉÏ¿ÎÊ±¼ä
+					out.println("<courseno>"+rs.getString(1)+"</courseno>");//è¯¾ç¨‹å·
+					out.println("<coursename>"+rs.getString(2)+"</coursename>");//è¯¾ç¨‹å
+					out.println("<cst>"+rs.getString(3)+"</cst>");//è¯¾æ—¶
+					out.println("<grade>"+rs.getString(4)+"</grade>");//å­¦åˆ†
+					out.println("<term>"+rs.getString(5)+"</term>");//å¼€è¯¾å­¦æœŸ
+					out.println("<cwt>"+rs.getString(6)+"</cwt>");//ä¸Šè¯¾æ—¶é—´
 			 }
 			  
 			rs.close();
 			con.close();    
 			}
-			//ËÑË÷°à¼¶
+			//æœç´¢ç­çº§
 			else if("search_class".equals(action))
 			{
 			   
@@ -332,29 +332,29 @@ public class autoComplete extends HttpServlet {
 			   ps=con.prepareStatement("SELECT * FROM ClassInfo");
 				   
 			   rs=ps.executeQuery();
-			   //¹¹½¨XMLÎÄ¼ş
+			   //æ„å»ºXMLæ–‡ä»¶
 			   while(rs.next())
 			   {
-				    System.out.println("°à¼¶ºÅ"+rs.getString(1));
-					out.println("<classno>"+rs.getString(1)+"</classno>");//°à¼¶ºÅ
-					out.println("<classname>"+rs.getString(2)+"</classname>");//°à¼¶Ãû
-					out.println("<academy>"+rs.getString(3)+"</academy>");//Ñ§Ôº	
+				    System.out.println("ç­çº§å·"+rs.getString(1));
+					out.println("<classno>"+rs.getString(1)+"</classno>");//ç­çº§å·
+					out.println("<classname>"+rs.getString(2)+"</classname>");//ç­çº§å
+					out.println("<academy>"+rs.getString(3)+"</academy>");//å­¦é™¢	
 			   }
 			   rs.close();
 			   con.close(); 
 			}
-			//¹ÜÀíÔ±Éí·İÌí¼Ó°à¼¶
+			//ç®¡ç†å‘˜èº«ä»½æ·»åŠ ç­çº§
 			else if("add_class".equals(action))
 			{
 				PreparedStatement ps=null;
-				PreparedStatement ps_check=null;//¼ì²é²åÈëÑ§ÉúĞÅÏ¢ÖĞµÄ°à¼¶ÊÇ·ñÔÚClassInfoÖĞ´æÔÚ
+				PreparedStatement ps_check=null;//æ£€æŸ¥æ’å…¥å­¦ç”Ÿä¿¡æ¯ä¸­çš„ç­çº§æ˜¯å¦åœ¨ClassInfoä¸­å­˜åœ¨
 				ResultSet rs_check=null;
 				ps_check=con.prepareStatement("SELECT * FROM ClassInfo WHERE ClassNo=?");
 				ps_check.setString(1,changecno_classinfo);
 				rs_check=ps_check.executeQuery();
-				if(!rs_check.next())//±íÊ¾°à¼¶ºÅ²»´æÔÚ£¬¿ÉÌí¼Ó
+				if(!rs_check.next())//è¡¨ç¤ºç­çº§å·ä¸å­˜åœ¨ï¼Œå¯æ·»åŠ 
 				{
-					out.println("<message>"+"#"+"</message>");//·¢ËÍ¸øĞÅÏ¢À´±íÊ¾Ìí¼ÓÕı³£
+					out.println("<message>"+"#"+"</message>");//å‘é€ç»™ä¿¡æ¯æ¥è¡¨ç¤ºæ·»åŠ æ­£å¸¸
 				ps=con.prepareStatement("INSERT INTO ClassInfo(ClassNo,ClassName,College) VALUES (?,?,?)");  
 				ps.setString(1,changecno_classinfo);
 				ps.setString(2,changecname_classinfo);
@@ -363,8 +363,8 @@ public class autoComplete extends HttpServlet {
 				}
 				else 
 				{
-					//Ìí¼ÓµÄ°à¼¶ÒÑ´æÔÚ£¬Ìí¼ÓÊ§°Ü
-					out.println("<message>"+"Ìí¼ÓÊ§°Ü£¡Ô­Òò£ºÌí¼Ó°à¼¶ÒÑ´æÔÚ£¡"+"</message>");
+					//æ·»åŠ çš„ç­çº§å·²å­˜åœ¨ï¼Œæ·»åŠ å¤±è´¥
+					out.println("<message>"+"æ·»åŠ å¤±è´¥ï¼åŸå› ï¼šæ·»åŠ ç­çº§å·²å­˜åœ¨ï¼"+"</message>");
 				}
 				rs_check.close();
 				con.close();
