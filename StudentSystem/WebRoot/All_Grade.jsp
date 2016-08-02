@@ -1,23 +1,23 @@
-<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,com.studentsystem.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,com.studentsystem.*" pageEncoding="UTF-8"%>
 <%!  List<Course> Courseinfo=new ArrayList<Course>();
      Course temp;
 %>
 <% 
     Courseinfo=(List<Course>)session.getAttribute("Grade"); 
-    System.out.println("��All_grade��Grade�Ĵ�С:"+Courseinfo.size());
+    System.out.println("在All_grade的Grade的大小:"+Courseinfo.size());
 %>
 
 <html>
   <body>
-      <h2>���пγ̳ɼ�</h2> 
+      <h2>所有课程成绩</h2> 
       <form action="Studentservlet" method="post">
       <input type="hidden" name="item" value="2">
       <table border="1">
       <tr>
-        <td>�γ̺�</td>
-        <td>�γ���</td>
-        <td>ѧ��</td>
-        <td>�ɼ�</td>
+        <td>课程号</td>
+        <td>课程名</td>
+        <td>学分</td>
+        <td>成绩</td>
       </tr>
       <tr>
        <%

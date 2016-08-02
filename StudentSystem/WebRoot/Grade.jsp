@@ -1,4 +1,4 @@
- <%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+ <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%!
    String username;   
 %>
@@ -6,8 +6,8 @@
    username=(String)session.getAttribute("userid");
 %>
 <html>
-   <!-- ʵ��AJAX��ѯ�Զ���ȫ�б� -->
-   <!-- ҳ�����Ϊgb2312��serverlt��λΪUTF-8 -->
+   <!-- 实现AJAX查询自动补全列表 -->
+   <!-- 页面编码为gb2312，serverlt端位为UTF-8 -->
   <head>
    <link rel="stylesheet" type="text/css" href="style.css">
    <style type="text/css">
@@ -24,13 +24,13 @@
   </head>
   <body>
   <div id="main">
-      <h1>��ѯ�ɼ�</h1> 
+      <h1>查询成绩</h1> 
      <table>
      <tr>
-           <td>����γ���:</td>
+           <td>输入课程名:</td>
            <td>
             <input type="text" id="names" onkeyup="findNames();">
-            <input type="button" id="search" onclick="searchResult();" value="ȷ ��">
+            <input type="button" id="search" onclick="searchResult();" value="确 定">
             <div id="popup">
               <table id="complete_table" >
                <tbody id="complete_body" ></tbody>
@@ -39,15 +39,15 @@
            </td>
      </tr>
      <tr>
-         <td height="20">�γ����
+         <td height="20">课程情况
          </td>
          <td height="80">
            <table border="1">
             <tr>
-              <td>�γ̺�</td>
-              <td>�γ���</td>
-              <td>ѧ��</td>
-              <td>�ɼ�</td>
+              <td>课程号</td>
+              <td>课程名</td>
+              <td>学分</td>
+              <td>成绩</td>
             </tr>         
             <tr>
               <td><input type="text" id="content1" readonly="true"></td>
@@ -64,7 +64,7 @@
       <div id="copy">
        <div id="copyright">
        <p>CopyRight&copy;2016</p>
-       <p>�������ӿƼ���ѧ</p>
+       <p>西安电子科技大学</p>
       </div>
     </div>
   </div>
@@ -125,7 +125,7 @@
                }
                else
                { 
-                  windows.alert("����ҳ�治����!");
+                  windows.alert("请求页面不存在!");
                }
             }
         }

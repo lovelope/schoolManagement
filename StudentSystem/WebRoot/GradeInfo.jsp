@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,com.studentsystem.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,com.studentsystem.*" pageEncoding="UTF-8"%>
 
 <%
       List<Course> Grade=new ArrayList<Course>();
@@ -7,7 +7,7 @@
       DataSource ds=null;
       PreparedStatement ps=null;
       PreparedStatement ps_grade=null;
-      //¶ÁÈ¡Êı¾İ¿âÖĞÊı¾İ
+      //è¯»å–æ•°æ®åº“ä¸­æ•°æ®
       try {
 			Context initCtx=new InitialContext();
 			Context encCtx=(Context)initCtx.lookup("java:comp/env");
@@ -33,7 +33,7 @@
 			ps_grade.close();
 			con.close();
 			
-			System.out.println("ÓÃ»§£º"+username+"ÓĞ³É¼¨µÄ¿Î³ÌµÄ´óĞ¡:"+Grade.size());
+			System.out.println("ç”¨æˆ·ï¼š"+username+"æœ‰æˆç»©çš„è¯¾ç¨‹çš„å¤§å°:"+Grade.size());
             session.setAttribute("Grade",Grade);
             session.setAttribute("SearchGrade",SearchGrade);		
 		} catch (NamingException e) {
@@ -82,9 +82,9 @@
 	   <div id="mainwrapper">
 	   	  <div id="sidebar">
 	   	  	<ul>
-	   	  	<!--×¢ÒâiframeÀïµÄidºÍnameÒªÏàÍ¬£¬ÇÒÇ¶Ì×µÄhtmlµÄiframeµÄid±ØĞë²»Í¬ -->
-	   	  		<li><a href="Grade.jsp" target="show_grade" ><span>²éÑ¯³É¼¨ </span> </a>
-	   	  		<li><a href="All_Grade.jsp" target="show_grade">ÏÔÊ¾ËùÓĞÒÑĞŞ¿Î³Ì³É¼¨</a></li>
+	   	  	<!--æ³¨æ„iframeé‡Œçš„idå’Œnameè¦ç›¸åŒï¼Œä¸”åµŒå¥—çš„htmlçš„iframeçš„idå¿…é¡»ä¸åŒ -->
+	   	  		<li><a href="Grade.jsp" target="show_grade" ><span>æŸ¥è¯¢æˆç»© </span> </a>
+	   	  		<li><a href="All_Grade.jsp" target="show_grade">æ˜¾ç¤ºæ‰€æœ‰å·²ä¿®è¯¾ç¨‹æˆç»©</a></li>
 	   	  	</ul>
 	   	  </div>
 	     <div id="content">
@@ -95,7 +95,7 @@
     	<div id="copy">
 		   <div id="copyright">
 			 <p>CopyRight&copy;2016</p>
-			 <p>Î÷°²µç×Ó¿Æ¼¼´óÑ§</p>
+			 <p>è¥¿å®‰ç”µå­ç§‘æŠ€å¤§å­¦</p>
 			</div>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession,com.studentsystem.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession,com.studentsystem.*" pageEncoding="UTF-8"%>
 <%!
    String username;   
    List<Student> Studentinfo=new ArrayList<Student>();
@@ -10,8 +10,8 @@
    Studentinfo=(List<Student>)session.getAttribute("MyStudentinfo");  
 %>
 <html>
-   <!-- ÊµÏÖAJAX²éÑ¯×Ô¶¯²¹È«ÁĞ±í -->
-   <!-- Ò³Ãæ±àÂëÎªgb2312£¬serverlt¶ËÎ»ÎªUTF-8 -->
+   <!-- å®ç°AJAXæŸ¥è¯¢è‡ªåŠ¨è¡¥å…¨åˆ—è¡¨ -->
+   <!-- é¡µé¢ç¼–ç ä¸ºgb2312ï¼Œserverltç«¯ä½ä¸ºUTF-8 -->
   <head >
   <style type="text/css">
    #main
@@ -84,7 +84,7 @@
                }
                else
                { 
-                  windows.alert("ÇëÇóÒ³Ãæ²»´æÔÚ!");
+                  windows.alert("è¯·æ±‚é¡µé¢ä¸å­˜åœ¨!");
                }
             }
         }
@@ -152,7 +152,7 @@
      <input type="hidden" name="item" value="1">
      <table align="center"> 
       <tr>
-           <td>ÊäÈë¿Î³ÌÃû:</td>
+           <td>è¾“å…¥è¯¾ç¨‹å:</td>
            <td>
             <input type="text" id="names" name="coursename" onkeyup="findNames();">
             <div style="position:absolute;"id="popup">
@@ -162,20 +162,20 @@
             </div>
            </td>
            <td>
-           <input type="submit" value="È·ÈÏ" id="submitcourse" onclick="setCourseName();" >
+           <input type="submit" value="ç¡®è®¤" id="submitcourse" onclick="setCourseName();" >
            </td>
      </tr>
     </table>
      </form>
-    <!--Ìá½»¿Î³ÌÃû¸øautocomplete²¹È«£¬ÔÚTeacherServerlÖĞ²éÑ¯£¬²¢ÔÚsessionÖĞ±£´æÑ¡¿ÎÑ§ÉúµÄĞÅÏ¢£¬³É¼¨ÉÏ´«Ö®ºó·¢ËÍ¸øTeacherseverlet´¦Àí  -->
+    <!--æäº¤è¯¾ç¨‹åç»™autocompleteè¡¥å…¨ï¼Œåœ¨TeacherServerlä¸­æŸ¥è¯¢ï¼Œå¹¶åœ¨sessionä¸­ä¿å­˜é€‰è¯¾å­¦ç”Ÿçš„ä¿¡æ¯ï¼Œæˆç»©ä¸Šä¼ ä¹‹åå‘é€ç»™Teacherseverletå¤„ç†  -->
      <form action="Teacherservlet" method="post"  align="center" id="result">
       <input type="hidden" name="item" value="2">
       <table border="1"  align="center">
       <tr>
-        <td>Ñ§ºÅ</td>
-        <td>ĞÕÃû</td>
-        <td>°à¼¶</td>
-        <td>³É¼¨</td>  
+        <td>å­¦å·</td>
+        <td>å§“å</td>
+        <td>ç­çº§</td>
+        <td>æˆç»©</td>  
       </tr>
       <tr>
        <%
@@ -191,8 +191,8 @@
        <%
        }%>
       </table>
-       <input type="submit" value="È·ÈÏ" >
-       <input type="reset" value="ÖØÖÃ">
+       <input type="submit" value="ç¡®è®¤" >
+       <input type="reset" value="é‡ç½®">
       </form>
   </body>
 </html>

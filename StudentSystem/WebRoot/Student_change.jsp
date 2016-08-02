@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%! String message;
     String phone;
     String Email;
@@ -19,7 +19,7 @@ if(message!=null)
 %>
 <html>
 	<head>
-		<title>ĞŞ¸ÄĞÅÏ¢</title>
+		<title>ä¿®æ”¹ä¿¡æ¯</title>
 		<script type="text/JavaScript">
 		function check_same()
    	    {
@@ -27,49 +27,49 @@ if(message!=null)
 		  var repwd=document.myForm.againpwd.value;
    	      if(pwd!=repwd)
    	      {
-   	  	    alert("Á½´ÎÃÜÂëÊäÈë²»Ò»ÖÂ");
+   	  	    alert("ä¸¤æ¬¡å¯†ç è¾“å…¥ä¸ä¸€è‡´");
    	  	    return false;
    	      }
    	    }
 		</script>
 	</head>
 	<body>
-		<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ĞŞ¸ÄĞÅÏ¢</h2>
+		<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ä¿®æ”¹ä¿¡æ¯</h2>
 		<form action="Studentservlet" method="post" name="myForm"> 
 		<input type="hidden" name="item" value="0">
-		<p>1.Ñ§ºÅ£¬ĞÕÃûµÈÖØÒªĞÅÏ¢µÄĞŞ¸Ä£¬ÇëÁªÏµ¹ÜÀíÔ±
+		<p>1.å­¦å·ï¼Œå§“åç­‰é‡è¦ä¿¡æ¯çš„ä¿®æ”¹ï¼Œè¯·è”ç³»ç®¡ç†å‘˜
 		</p>
-		<p>2.ÃÜÂëÈô²»ĞŞ¸Ä£¬¿ÉÒÔ²»ÓÃÌîĞ´
+		<p>2.å¯†ç è‹¥ä¸ä¿®æ”¹ï¼Œå¯ä»¥ä¸ç”¨å¡«å†™
 		</p>
 		<table width="50%" border="1">
 			<tr>
-				<td>ÁªÏµ·½Ê½£º</td>
+				<td>è”ç³»æ–¹å¼ï¼š</td>
 				<td>
 					<input type="text" name="phone" autocomplete="off" value=<%=phone%>>
 				</td>
 			</tr>
 			<tr>
-				<td >Email£º</td>
+				<td >Emailï¼š</td>
 				<td>
 					<input type="text" name="email" autocomplete="off" value=<%=Email%>>
 				</td>
 			</tr>
 			<tr>
-                <td >ĞÂÃÜÂë£º</td>
+                <td >æ–°å¯†ç ï¼š</td>
                 <td><font size="6"><input type="password" name="newpwd" id="newpwd"></font></td>
                 
 			</tr>
 			
 			<tr>
-			    <td >ÔÙ´ÎÊäÈëÃÜÂë£º</td>
+			    <td >å†æ¬¡è¾“å…¥å¯†ç ï¼š</td>
                 <td><font size="6"><input type="password" name="againpwd" id="againpwd"></font></td>
             </tr>
 			<tr>
 				<td align="right">
-					<input type="submit" name="submit" value="Ìá½»" onClick="return check_same();"/>
+					<input type="submit" name="submit" value="æäº¤" onClick="return check_same();"/>
 				</td>
 				<td>
-				    <input type="reset" name="reset" value="ÖØÖÃ">
+				    <input type="reset" name="reset" value="é‡ç½®">
 				</td>
 		    </tr>
 

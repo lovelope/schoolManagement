@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
   <head>
    <style type="text/css">
@@ -36,10 +36,10 @@
         var lastpagenode;
         var currentpage=1;
         var page=new Array(30);
-        //´´½¨AJAX¶ÔÏó
+        //åˆ›å»ºAJAXå¯¹è±¡
         function createXMLHttpRequest()
         {
-            //¸ù¾İ²»Í¬ä¯ÀÀÆ÷À´´´½¨
+            //æ ¹æ®ä¸åŒæµè§ˆå™¨æ¥åˆ›å»º
             if(window.XMLHttpRequest)
             {
              XMLHttpReq=new XMLHttpRequest();
@@ -58,9 +58,9 @@
                  }
             }
         }
-        //²éÑ¯Ñ§ÉúĞÅÏ¢ £¬after_add_class ±íÊ¾ÊÇ·ñÊÇÌí¼ÓÑ§ÉúÖ»ºóµÄÏÔÊ¾£¬ÒòÎªĞèÒª»ñÈ¡°à¼¶ĞÅÏ¢
-        //ÈôÎªÕı³£²éÑ¯£¬ÔÚÉ¾³ıºÍ¸üĞÂĞÅÏ¢²Ù×÷Ö®ºó£¬²éÑ¯Ìõ¼ş»¹±£´æÔÚÒ³ÃæÖĞ£¬²»ĞèÒªÔÙ´ÎÊäÈë
-        //¶øÌí¼ÓÑ§ÉúÖ®ºó£¬Ğè»ñµÃÆä°àºÅ£¬ÒÔ°àºÅÀ´²éÑ¯Ìí¼ÓÖ®ºóµÄÇé¿ö
+        //æŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯ ï¼Œafter_add_class è¡¨ç¤ºæ˜¯å¦æ˜¯æ·»åŠ å­¦ç”Ÿåªåçš„æ˜¾ç¤ºï¼Œå› ä¸ºéœ€è¦è·å–ç­çº§ä¿¡æ¯
+        //è‹¥ä¸ºæ­£å¸¸æŸ¥è¯¢ï¼Œåœ¨åˆ é™¤å’Œæ›´æ–°ä¿¡æ¯æ“ä½œä¹‹åï¼ŒæŸ¥è¯¢æ¡ä»¶è¿˜ä¿å­˜åœ¨é¡µé¢ä¸­ï¼Œä¸éœ€è¦å†æ¬¡è¾“å…¥
+        //è€Œæ·»åŠ å­¦ç”Ÿä¹‹åï¼Œéœ€è·å¾—å…¶ç­å·ï¼Œä»¥ç­å·æ¥æŸ¥è¯¢æ·»åŠ ä¹‹åçš„æƒ…å†µ
         function search(after_add_class)
         { 
            var url;
@@ -79,21 +79,21 @@
            XMLHttpReq.onreadystatechange=processSearchResponse;
            XMLHttpReq.send(null);
         }
-        //×´Ì¬ÏìÓ¦º¯Êı
+        //çŠ¶æ€å“åº”å‡½æ•°
         function processSearchResponse()
         {
           if(XMLHttpReq.readyState==4)
           {
              if(XMLHttpReq.status==200)
              {
-                //ÈôÌõ¼ş¶¼Âú×ã£¬Ôò±íÊ¾ÏìÓ¦Õı³£
+                //è‹¥æ¡ä»¶éƒ½æ»¡è¶³ï¼Œåˆ™è¡¨ç¤ºå“åº”æ­£å¸¸
                 clearNames();
-                //ÒÔÏÂÎª´ÓautoCompleteÖĞ»ñÈ¡µÄXMLÎÄ¼şÖĞ½âÎöÊı¾İ
+                //ä»¥ä¸‹ä¸ºä»autoCompleteä¸­è·å–çš„XMLæ–‡ä»¶ä¸­è§£ææ•°æ®
                 cno=XMLHttpReq.responseXML.getElementsByTagName("classno");
                 cname=XMLHttpReq.responseXML.getElementsByTagName("classname");
                 academy=XMLHttpReq.responseXML.getElementsByTagName("academy");
-                var size=cno.length;//»ñÈ¡ĞÅÏ¢×éÊı´óĞ¡£¬ÓÃÓÚ·ÖÒ³ÏÔÊ¾
-                //Ò»Ò³°üº¬5Ìõ¼ÇÂ¼
+                var size=cno.length;//è·å–ä¿¡æ¯ç»„æ•°å¤§å°ï¼Œç”¨äºåˆ†é¡µæ˜¾ç¤º
+                //ä¸€é¡µåŒ…å«5æ¡è®°å½•
                 if(size<=5)
                    pageSum=1;
                 for(var k=1;k<=size;k++)
@@ -118,7 +118,7 @@
              }
           }
         }
-        //ÓÃÓÚÇå¿ÕÔÚÒ³ÃæÉÏ³öÏÖµÄĞÅÏ¢±í¸ñ
+        //ç”¨äºæ¸…ç©ºåœ¨é¡µé¢ä¸Šå‡ºç°çš„ä¿¡æ¯è¡¨æ ¼
         function clearNames()
         {
            var sortlist=document.getElementById("sortlist");
@@ -128,7 +128,7 @@
                  sortlist.removeChild(sortlist.childNodes[i-1]);
            }  
         }
-        //»ñµÃÉÏÒ»Ò³
+        //è·å¾—ä¸Šä¸€é¡µ
         function forwardpage()
         {
            if(currentpage>1)
@@ -142,7 +142,7 @@
                 }              
            }
         }
-        //»ñµÃÏÂÒ»Ò³
+        //è·å¾—ä¸‹ä¸€é¡µ
         function nextpage()
         {
            if(currentpage<pageSum)
@@ -156,7 +156,7 @@
                 }
        }
        }
-        //ÔÚÑ§ÉúÌí¼ÓÖ®Ç°¹¹½¨±í¸ñ
+        //åœ¨å­¦ç”Ÿæ·»åŠ ä¹‹å‰æ„å»ºè¡¨æ ¼
        function before_add_showinfo()
        {
              clearNames();
@@ -189,7 +189,7 @@
              cell_deleteinfo=document.createElement("td");
              var deleteinfo=document.createElement("input");
              deleteinfo.setAttribute("type","button");
-             deleteinfo.setAttribute("value","È·ÈÏ");
+             deleteinfo.setAttribute("value","ç¡®è®¤");
              deleteinfo.onclick=function(){addinfo();};
              cell_deleteinfo.appendChild(deleteinfo);
              row.appendChild(cell_deleteinfo);
@@ -197,13 +197,13 @@
              cell_deleteinfo=document.createElement("td");
              var deleteinfo=document.createElement("input");
              deleteinfo.setAttribute("type","button");
-             deleteinfo.setAttribute("value","È¡Ïû");
+             deleteinfo.setAttribute("value","å–æ¶ˆ");
              deleteinfo.onclick=function(){window.location.href ="charge_Class.jsp";};
              cell_deleteinfo.appendChild(deleteinfo);
              row.appendChild(cell_deleteinfo);   
              document.getElementById("sortlist").appendChild(row);
        }
-       //Ìí¼Ó°à¼¶ĞÅÏ¢
+       //æ·»åŠ ç­çº§ä¿¡æ¯
        function addinfo()
        {
            createXMLHttpRequest();
@@ -219,9 +219,9 @@
               XMLHttpReq.send(null); 
            }
            else 
-              alert("ÇëÊäÈëÍêÕûĞÅÏ¢");
+              alert("è¯·è¾“å…¥å®Œæ•´ä¿¡æ¯");
        }
-       //×´Ì¬ÏìÓ¦º¯Êı
+       //çŠ¶æ€å“åº”å‡½æ•°
        function addStateChange()
        {
            if(XMLHttpReq.readyState==4)
@@ -230,7 +230,7 @@
              {
                 var after_add_class=document.getElementById("textcno").value;
                 message=XMLHttpReq.responseXML.getElementsByTagName("message");
-                //ÓÃÀ´ÌáÊ¾´íÎóĞÅÏ¢£¬µ±ÊäÈëµÄ°àºÅ²»´æÔÚÊ±£¬Ôò»áÌáĞÑ
+                //ç”¨æ¥æç¤ºé”™è¯¯ä¿¡æ¯ï¼Œå½“è¾“å…¥çš„ç­å·ä¸å­˜åœ¨æ—¶ï¼Œåˆ™ä¼šæé†’
                 if(message[0].firstChild.data!="#")
                 {
                    alert(message[0].firstChild.data);
@@ -240,7 +240,7 @@
              }
           }
        }
-       //ÏÔÊ¾ĞÅÏ¢
+       //æ˜¾ç¤ºä¿¡æ¯
        function showitems(i)
        {
              var cno_nextNode=cno[i].firstChild.data;
@@ -263,7 +263,7 @@
                          
              document.getElementById("sortlist").appendChild(row);
         }
-        //ÓÃÀ´ÊÇ±»Ñ¡ÖĞµÄĞĞ±äÉ«
+        //ç”¨æ¥æ˜¯è¢«é€‰ä¸­çš„è¡Œå˜è‰²
         var rows=document.getElementByTagName('tr');
         for(var i=0;i<rows.length;i++)
         {
@@ -284,12 +284,12 @@
      <table>
        <tr>
          <td>
-           <input type="button" onclick="search();" value="µã»÷ÏÔÊ¾ËùÓĞ°à¼¶">
+           <input type="button" onclick="search();" value="ç‚¹å‡»æ˜¾ç¤ºæ‰€æœ‰ç­çº§">
          </td>
        </tr>
        <tr>
          <td>
-         <input type="button" value="***Ìí¼Ó°à¼¶***" onclick="before_add_showinfo();">
+         <input type="button" value="***æ·»åŠ ç­çº§***" onclick="before_add_showinfo();">
          </td>
          <td> </td>
          <td> </td>
@@ -300,21 +300,21 @@
    <div id="main" align="center">
     <table border="1px" width="1300px" class='tablelist'>
      <tr>
-          <td align="center" width="20px">°àºÅ</td>
-          <td align="center" width="20px">°àÃû</td>
-          <td align="center" width="20px">Ñ§Ôº</td>
-          <td align="center" width="20px">²Ù×÷</td>
-          <td align="center" width="20px">²Ù×÷</td>
+          <td align="center" width="20px">ç­å·</td>
+          <td align="center" width="20px">ç­å</td>
+          <td align="center" width="20px">å­¦é™¢</td>
+          <td align="center" width="20px">æ“ä½œ</td>
+          <td align="center" width="20px">æ“ä½œ</td>
      </tr>
      <tbody id="sortlist">
      </tbody>
     </table>
    </div>
    <div id="nextpage" align="center">
-      µÚ<input type="text" id="currentpage" style="width:20px" readonly="true">Ò³&nbsp;&nbsp;&nbsp;
-      <input type="button" value="ÉÏÒ»Ò³" onclick="forwardpage();">&nbsp;
-      <input type="button" value="ÏÂÒ»Ò³" onclick="nextpage();">&nbsp;&nbsp;&nbsp;
-      ¹²<input type="text" id="sumpage" style="width:20px" readonly="true">Ò³
+      ç¬¬<input type="text" id="currentpage" style="width:20px" readonly="true">é¡µ&nbsp;&nbsp;&nbsp;
+      <input type="button" value="ä¸Šä¸€é¡µ" onclick="forwardpage();">&nbsp;
+      <input type="button" value="ä¸‹ä¸€é¡µ" onclick="nextpage();">&nbsp;&nbsp;&nbsp;
+      å…±<input type="text" id="sumpage" style="width:20px" readonly="true">é¡µ
     </div>
   </body>
 </html>

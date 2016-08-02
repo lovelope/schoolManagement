@@ -1,10 +1,10 @@
-<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession" pageEncoding="UTF-8"%>
 <%
       Connection con=null;
       DataSource ds=null;
       PreparedStatement ps=null;
       PreparedStatement ps_photo=null;
-      //¶ÁÈ¡Êý¾Ý¿âÖÐÊý¾Ý
+      //è¯»å–æ•°æ®åº“ä¸­æ•°æ®
       try {
 			Context initCtx=new InitialContext();
 			Context encCtx=(Context)initCtx.lookup("java:comp/env");
@@ -37,7 +37,7 @@
                session.setAttribute("StudentPhoto",rs_photo.getString(1));
             }
             rs_photo.close();
-            rs.close();//ÊµÏÖ¶ÌÁ¬½Ó£¬¼°Ê±¹Ø±ÕÓëÊý¾Ý¿âµÄÁ¬½Ó
+            rs.close();//å®žçŽ°çŸ­è¿žæŽ¥ï¼ŒåŠæ—¶å…³é—­ä¸Žæ•°æ®åº“çš„è¿žæŽ¥
             ps.close();
             con.close();
 		} catch (NamingException e) {
@@ -50,7 +50,7 @@
 %>
 <html>
 <head>
-   <title>¸öÈËÐÅÏ¢½çÃæ </title>	
+   <title>ä¸ªäººä¿¡æ¯ç•Œé¢ </title>	
    	<style type="text/css">
    	#mainwrapper 
    	{
@@ -80,9 +80,9 @@
 	   <div id="mainwrapper">
 	   	  <div id="sidebar">
 	   	  	<ul>
-	   	  	<!--×¢ÒâiframeÀïµÄidºÍnameÒªÏàÍ¬£¬ÇÒÇ¶Ì×µÄhtmlµÄiframeµÄid±ØÐë²»Í¬ -->
-	   	  		<li><a href="Student.jsp" target="sho" ><span>¸öÈËÐÅÏ¢ </span> </a>
-	   	  		<li><a href="Student_change.jsp" target="sho">¸öÈËÐÅÏ¢ÐÞ¸Ä</a></li>
+	   	  	<!--æ³¨æ„iframeé‡Œçš„idå’Œnameè¦ç›¸åŒï¼Œä¸”åµŒå¥—çš„htmlçš„iframeçš„idå¿…é¡»ä¸åŒ -->
+	   	  		<li><a href="Student.jsp" target="sho" ><span>ä¸ªäººä¿¡æ¯ </span> </a>
+	   	  		<li><a href="Student_change.jsp" target="sho">ä¸ªäººä¿¡æ¯ä¿®æ”¹</a></li>
 	   	  	</ul>
 	   	  </div>
 	     <div id="content">

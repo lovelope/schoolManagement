@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
 <html>
   <head>
@@ -43,30 +43,30 @@
    }
    </style>
    <script lang="javascript">
-        var XMLHttpReq;//AJAX¶ÔÏó
-        var message;//ÓÃÓÚÒ³Ãæ²éÑ¯·´À¡ĞÅÏ¢£¬°üÀ¨Ñ§ÉúĞÅÏ¢Ìí¼ÓµÄ½á¹û£¬Ñ§ÉúĞÅÏ¢ĞŞ¸ÄµÄ½á¹û£¬°à¼¶Ìí¼ÓµÄ½á¹û
-        var kind;//²éÑ¯Ñ§ÉúĞÅÏ¢Ê±²ÉÓÃ²»Í¬µÄËÑË÷ÀàĞÍ
-        var inputField;//²éÑ¯ĞÅÏ¢ÊäÈë¿ò
-        var sno;//Ñ§ºÅ
-        var sname;//Ñ§ÉúĞÕÃû
-        var sphone;//ÁªÏµµç»°
-        var ssex;//ĞÔ±ğ
-        var ssubject;//×¨Òµ
-        var sacademy;//Ñ§Ôº
-        var sclass;//°à¼¶
-        var scardnumber;//Éí·İÖ¤ºÅ
-        var sprince;//¼®¹á
-        var sbirthday;//³öÉúÄêÔÂ
-        var semail;//Ñ§Éúµç×ÓÓÊÏä
-        var spwd;//µÇÂ¼ÃÜÂë
-        var pageSum=1;//ÓÃÓÚ·ÖÒ³ÏÔÊ¾
+        var XMLHttpReq;//AJAXå¯¹è±¡
+        var message;//ç”¨äºé¡µé¢æŸ¥è¯¢åé¦ˆä¿¡æ¯ï¼ŒåŒ…æ‹¬å­¦ç”Ÿä¿¡æ¯æ·»åŠ çš„ç»“æœï¼Œå­¦ç”Ÿä¿¡æ¯ä¿®æ”¹çš„ç»“æœï¼Œç­çº§æ·»åŠ çš„ç»“æœ
+        var kind;//æŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯æ—¶é‡‡ç”¨ä¸åŒçš„æœç´¢ç±»å‹
+        var inputField;//æŸ¥è¯¢ä¿¡æ¯è¾“å…¥æ¡†
+        var sno;//å­¦å·
+        var sname;//å­¦ç”Ÿå§“å
+        var sphone;//è”ç³»ç”µè¯
+        var ssex;//æ€§åˆ«
+        var ssubject;//ä¸“ä¸š
+        var sacademy;//å­¦é™¢
+        var sclass;//ç­çº§
+        var scardnumber;//èº«ä»½è¯å·
+        var sprince;//ç±è´¯
+        var sbirthday;//å‡ºç”Ÿå¹´æœˆ
+        var semail;//å­¦ç”Ÿç”µå­é‚®ç®±
+        var spwd;//ç™»å½•å¯†ç 
+        var pageSum=1;//ç”¨äºåˆ†é¡µæ˜¾ç¤º
         var lastpagenode;
         var currentpage=1;
         var page=new Array(30);
-        //´´½¨AJAX¶ÔÏó
+        //åˆ›å»ºAJAXå¯¹è±¡
         function createXMLHttpRequest()
         {
-            //¸ù¾İ²»Í¬ä¯ÀÀÆ÷À´´´½¨
+            //æ ¹æ®ä¸åŒæµè§ˆå™¨æ¥åˆ›å»º
             if(window.XMLHttpRequest)
             {
              XMLHttpReq=new XMLHttpRequest();
@@ -85,16 +85,16 @@
                  }
             }
         }
-        //²éÑ¯Ñ§ÉúĞÅÏ¢ £¬after_add_class ±íÊ¾ÊÇ·ñÊÇÌí¼ÓÑ§ÉúÖ»ºóµÄÏÔÊ¾£¬ÒòÎªĞèÒª»ñÈ¡°à¼¶ĞÅÏ¢
-        //ÈôÎªÕı³£²éÑ¯£¬ÔÚÉ¾³ıºÍ¸üĞÂĞÅÏ¢²Ù×÷Ö®ºó£¬²éÑ¯Ìõ¼ş»¹±£´æÔÚÒ³ÃæÖĞ£¬²»ĞèÒªÔÙ´ÎÊäÈë
-        //¶øÌí¼ÓÑ§ÉúÖ®ºó£¬Ğè»ñµÃÆä°àºÅ£¬ÒÔ°àºÅÀ´²éÑ¯Ìí¼ÓÖ®ºóµÄÇé¿ö
+        //æŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯ ï¼Œafter_add_class è¡¨ç¤ºæ˜¯å¦æ˜¯æ·»åŠ å­¦ç”Ÿåªåçš„æ˜¾ç¤ºï¼Œå› ä¸ºéœ€è¦è·å–ç­çº§ä¿¡æ¯
+        //è‹¥ä¸ºæ­£å¸¸æŸ¥è¯¢ï¼Œåœ¨åˆ é™¤å’Œæ›´æ–°ä¿¡æ¯æ“ä½œä¹‹åï¼ŒæŸ¥è¯¢æ¡ä»¶è¿˜ä¿å­˜åœ¨é¡µé¢ä¸­ï¼Œä¸éœ€è¦å†æ¬¡è¾“å…¥
+        //è€Œæ·»åŠ å­¦ç”Ÿä¹‹åï¼Œéœ€è·å¾—å…¶ç­å·ï¼Œä»¥ç­å·æ¥æŸ¥è¯¢æ·»åŠ ä¹‹åçš„æƒ…å†µ
         function search(after_add_class)
         { 
            var url;
            createXMLHttpRequest();
            if(after_add_class!=null)
            {
-              url="autoComplete?action=search_student&name="+after_add_class+"&kind=2";//kind=2±íÊ¾ÒÔ°à¼¶ºÅÎªÒÀ¾İ½øĞĞÑ§Éú²éÑ¯
+              url="autoComplete?action=search_student&name="+after_add_class+"&kind=2";//kind=2è¡¨ç¤ºä»¥ç­çº§å·ä¸ºä¾æ®è¿›è¡Œå­¦ç”ŸæŸ¥è¯¢
            }
            else
            {
@@ -106,40 +106,40 @@
            XMLHttpReq.onreadystatechange=processSearchResponse;
            XMLHttpReq.send(null);
         }
-        //×´Ì¬ÏìÓ¦º¯Êı
+        //çŠ¶æ€å“åº”å‡½æ•°
         function processSearchResponse()
         {
           if(XMLHttpReq.readyState==4)
           {
              if(XMLHttpReq.status==200)
              {
-                //ÈôÌõ¼ş¶¼Âú×ã£¬Ôò±íÊ¾ÏìÓ¦Õı³£
+                //è‹¥æ¡ä»¶éƒ½æ»¡è¶³ï¼Œåˆ™è¡¨ç¤ºå“åº”æ­£å¸¸
                 clearNames();
-                //ÒÔÏÂÎª´ÓautoCompleteÖĞ»ñÈ¡µÄXMLÎÄ¼şÖĞ½âÎöÊı¾İ
-                sno=XMLHttpReq.responseXML.getElementsByTagName("studentno");//Ñ§ºÅ
-                sname=XMLHttpReq.responseXML.getElementsByTagName("studentname");//ĞÕÃû
-                sphone=XMLHttpReq.responseXML.getElementsByTagName("studentphone");//ÁªÏµµç»°
-                ssex=XMLHttpReq.responseXML.getElementsByTagName("studentsex");//Ñ§ÉúĞÔ±ğ
-                ssubject=XMLHttpReq.responseXML.getElementsByTagName("studentsubject");//×¨Òµ
-                sacademy=XMLHttpReq.responseXML.getElementsByTagName("studentacademy");//Ñ§Ôº
-                sclass=XMLHttpReq.responseXML.getElementsByTagName("studentclass");//Ñ§Éú°à¼¶
-                scardnumber=XMLHttpReq.responseXML.getElementsByTagName("studentcardnumber");//Ñ§ÉúÉí·İÖ¤ºÅ
-                sprince=XMLHttpReq.responseXML.getElementsByTagName("studentprince");//¼®¹á
-                sbirthday=XMLHttpReq.responseXML.getElementsByTagName("studentbirthday");//Ñ§Éú³öÉúÄêÔÂ
-                semail=XMLHttpReq.responseXML.getElementsByTagName("studentemail");//µç×ÓÓÊÏä
-                spwd=XMLHttpReq.responseXML.getElementsByTagName("studentpwd");//µÇÂ¼ÏµÍ³ÃÜÂë
-                var size=sno.length;//»ñÈ¡ĞÅÏ¢×éÊı´óĞ¡£¬ÓÃÓÚ·ÖÒ³ÏÔÊ¾
-                //Ò»Ò³°üº¬5Ìõ¼ÇÂ¼
+                //ä»¥ä¸‹ä¸ºä»autoCompleteä¸­è·å–çš„XMLæ–‡ä»¶ä¸­è§£ææ•°æ®
+                sno=XMLHttpReq.responseXML.getElementsByTagName("studentno");//å­¦å·
+                sname=XMLHttpReq.responseXML.getElementsByTagName("studentname");//å§“å
+                sphone=XMLHttpReq.responseXML.getElementsByTagName("studentphone");//è”ç³»ç”µè¯
+                ssex=XMLHttpReq.responseXML.getElementsByTagName("studentsex");//å­¦ç”Ÿæ€§åˆ«
+                ssubject=XMLHttpReq.responseXML.getElementsByTagName("studentsubject");//ä¸“ä¸š
+                sacademy=XMLHttpReq.responseXML.getElementsByTagName("studentacademy");//å­¦é™¢
+                sclass=XMLHttpReq.responseXML.getElementsByTagName("studentclass");//å­¦ç”Ÿç­çº§
+                scardnumber=XMLHttpReq.responseXML.getElementsByTagName("studentcardnumber");//å­¦ç”Ÿèº«ä»½è¯å·
+                sprince=XMLHttpReq.responseXML.getElementsByTagName("studentprince");//ç±è´¯
+                sbirthday=XMLHttpReq.responseXML.getElementsByTagName("studentbirthday");//å­¦ç”Ÿå‡ºç”Ÿå¹´æœˆ
+                semail=XMLHttpReq.responseXML.getElementsByTagName("studentemail");//ç”µå­é‚®ç®±
+                spwd=XMLHttpReq.responseXML.getElementsByTagName("studentpwd");//ç™»å½•ç³»ç»Ÿå¯†ç 
+                var size=sno.length;//è·å–ä¿¡æ¯ç»„æ•°å¤§å°ï¼Œç”¨äºåˆ†é¡µæ˜¾ç¤º
+                //ä¸€é¡µåŒ…å«5æ¡è®°å½•
                 if(size<=5)
-                   pageSum=1;//Èç¹ûÑ§ÉúĞÅÏ¢ÉÙÓÚ5Ìõ£¬ÔòÖ»ÓĞµÚÒ»Ò³
+                   pageSum=1;//å¦‚æœå­¦ç”Ÿä¿¡æ¯å°‘äº5æ¡ï¼Œåˆ™åªæœ‰ç¬¬ä¸€é¡µ
                 for(var k=1;k<=size;k++)
                   if(k>5)
                   {
                      size=size-5
                      k=1;
-                     pageSum++;//»ñµÃ·ÖÒ³ºÅ
+                     pageSum++;//è·å¾—åˆ†é¡µå·
                   }    
-                lastpagenode=size%5;//»ñµÃ×îºóÒ»Ò³Ñ§ÉúĞÅÏ¢¸öÊı
+                lastpagenode=size%5;//è·å¾—æœ€åä¸€é¡µå­¦ç”Ÿä¿¡æ¯ä¸ªæ•°
                 for(var j=1;j<=pageSum;j++)
                    page[j]=5;
                 if(lastpagenode!=0)
@@ -154,7 +154,7 @@
              }
           }
         }
-        //ÓÃÓÚÇå¿ÕÔÚÒ³ÃæÉÏ³öÏÖµÄĞÅÏ¢±í¸ñ
+        //ç”¨äºæ¸…ç©ºåœ¨é¡µé¢ä¸Šå‡ºç°çš„ä¿¡æ¯è¡¨æ ¼
         function clearNames()
         {
            var sortlist=document.getElementById("sortlist");
@@ -164,7 +164,7 @@
                  sortlist.removeChild(sortlist.childNodes[i-1]);
            }  
         }
-        //»ñµÃÉÏÒ»Ò³
+        //è·å¾—ä¸Šä¸€é¡µ
         function forwardpage()
         {
            if(currentpage>1)
@@ -178,7 +178,7 @@
                 }              
            }
         }
-        //»ñµÃÏÂÒ»Ò³
+        //è·å¾—ä¸‹ä¸€é¡µ
         function nextpage()
         {
            if(currentpage<pageSum)
@@ -192,10 +192,10 @@
                 }
        }
        }
-       //É¾³ıÑ§ÉúĞÅÏ¢
+       //åˆ é™¤å­¦ç”Ÿä¿¡æ¯
        function deleteSort(i)
        {
-          if(confirm("È·ÈÏÉ¾³ı£¿")) {
+          if(confirm("ç¡®è®¤åˆ é™¤ï¼Ÿ")) {
 
            createXMLHttpRequest();
            var url="autoComplete?action=delete&name="+sno[i].firstChild.data+"&id="+i;
@@ -204,7 +204,7 @@
            XMLHttpReq.send(null);
            }
        }
-       //×´Ì¬ÏìÓ¦º¯Êı
+       //çŠ¶æ€å“åº”å‡½æ•°
        function deleteStateChange()
        {
            if(XMLHttpReq.readyState==4)
@@ -212,15 +212,15 @@
              if(XMLHttpReq.status==200)
              {
                 pageSum=1;
-                search();//É¾³ı¹ıºó£¬ÔÙ´ÎÏÔÊ¾¸üĞÂºóµÄÑ§ÉúĞÅÏ¢±í¸ñÄÚÈİ
+                search();//åˆ é™¤è¿‡åï¼Œå†æ¬¡æ˜¾ç¤ºæ›´æ–°åçš„å­¦ç”Ÿä¿¡æ¯è¡¨æ ¼å†…å®¹
              }
           }
        }
-       //Ñ§ÉúĞÅÏ¢ĞŞ¸ÄÇ°¹¹½¨±í¸ñ£¬·½±ãĞŞ¸Ä
+       //å­¦ç”Ÿä¿¡æ¯ä¿®æ”¹å‰æ„å»ºè¡¨æ ¼ï¼Œæ–¹ä¾¿ä¿®æ”¹
        function before_change_showinfo(i)
        {
              clearNames();
-             //Í¨¹ı´Óxxx[i].firstChild.dataÖĞ»ñÈ¡ĞèÒªµÄÊı¾İ
+             //é€šè¿‡ä»xxx[i].firstChild.dataä¸­è·å–éœ€è¦çš„æ•°æ®
              var sno_nextNode=sno[i].firstChild.data;
              var sname_nextNode=sname[i].firstChild.data;
              var sphone_nextNode=sphone[i].firstChild.data;
@@ -236,7 +236,7 @@
              var row,cell_sno,cell_sname,cell_sphone,cell_sex,cell_subject,cell_academy,cell_change,cell_deleteinfo,cell_spwd,cell_class,cell_cardnumber,cell_prince,cell_birthday,cell_email;
              row=document.createElement("tr");
              
-             //¶¯Ì¬¹¹½¨±í¸ñÀ´³ÊÏÖÑ§ÉúĞÅÏ¢
+             //åŠ¨æ€æ„å»ºè¡¨æ ¼æ¥å‘ˆç°å­¦ç”Ÿä¿¡æ¯
              cell_sno=document.createElement("td");
              var snochange=document.createElement("input");
              snochange.setAttribute("type","text");
@@ -336,7 +336,7 @@
              cell_deleteinfo=document.createElement("td");
              var deleteinfo=document.createElement("input");
              deleteinfo.setAttribute("type","button");
-             deleteinfo.setAttribute("value","È·ÈÏ");
+             deleteinfo.setAttribute("value","ç¡®è®¤");
              deleteinfo.onclick=function(){changeinfo(i);};
              cell_deleteinfo.appendChild(deleteinfo);
              row.appendChild(cell_deleteinfo);
@@ -344,18 +344,18 @@
              cell_deleteinfo=document.createElement("td");
              var deleteinfo=document.createElement("input");
              deleteinfo.setAttribute("type","button");
-             deleteinfo.setAttribute("value","È¡Ïû");
+             deleteinfo.setAttribute("value","å–æ¶ˆ");
              deleteinfo.onclick=function(){search();};
              cell_deleteinfo.appendChild(deleteinfo);
              row.appendChild(cell_deleteinfo);
                    
              document.getElementById("sortlist").appendChild(row);
        }
-       //ĞŞ¸ÄĞÅÏ¢
+       //ä¿®æ”¹ä¿¡æ¯
        function changeinfo(i)
        {
            createXMLHttpRequest();
-            //Í¨¹ı´Óxxx[i].firstChild.dataÖĞ»ñÈ¡ĞèÒªµÄÊı¾İ
+            //é€šè¿‡ä»xxx[i].firstChild.dataä¸­è·å–éœ€è¦çš„æ•°æ®
            var no=document.getElementById("textsno").value;
            var name=document.getElementById("textsname").value;
            var phone=document.getElementById("textsphone").value;
@@ -373,7 +373,7 @@
            XMLHttpReq.onreadystatechange=changeStateChange;
            XMLHttpReq.send(null); 
        }
-       //×´Ì¬ÏìÓ¦º¯Êı
+       //çŠ¶æ€å“åº”å‡½æ•°
        function changeStateChange(i)
        {
            if(XMLHttpReq.readyState==4)
@@ -382,7 +382,7 @@
              {
                 pageSum=1;
                  message=XMLHttpReq.responseXML.getElementsByTagName("message");
-                //ÓÃÀ´ÌáÊ¾´íÎóĞÅÏ¢£¬µ±ÊäÈëµÄ°àºÅ²»´æÔÚÊ±£¬Ôò»áÌáĞÑ
+                //ç”¨æ¥æç¤ºé”™è¯¯ä¿¡æ¯ï¼Œå½“è¾“å…¥çš„ç­å·ä¸å­˜åœ¨æ—¶ï¼Œåˆ™ä¼šæé†’
                 if(message.length!=0)
                 {
                    alert(message[0].firstChild.data);
@@ -391,7 +391,7 @@
              }
           }
        }
-       //ÔÚÑ§ÉúÌí¼ÓÖ®Ç°¹¹½¨±í¸ñ
+       //åœ¨å­¦ç”Ÿæ·»åŠ ä¹‹å‰æ„å»ºè¡¨æ ¼
        function before_add_showinfo()
        {
              clearNames();
@@ -496,7 +496,7 @@
              cell_deleteinfo=document.createElement("td");
              var deleteinfo=document.createElement("input");
              deleteinfo.setAttribute("type","button");
-             deleteinfo.setAttribute("value","È·ÈÏ");
+             deleteinfo.setAttribute("value","ç¡®è®¤");
              deleteinfo.onclick=function(){addinfo();};
              cell_deleteinfo.appendChild(deleteinfo);
              row.appendChild(cell_deleteinfo);
@@ -504,18 +504,18 @@
              cell_deleteinfo=document.createElement("td");
              var deleteinfo=document.createElement("input");
              deleteinfo.setAttribute("type","button");
-             deleteinfo.setAttribute("value","È¡Ïû");
+             deleteinfo.setAttribute("value","å–æ¶ˆ");
              deleteinfo.onclick=function(){window.location.href ="charge_Student.jsp";};
              cell_deleteinfo.appendChild(deleteinfo);
              row.appendChild(cell_deleteinfo);
                    
              document.getElementById("sortlist").appendChild(row);
        }
-       //Ìí¼ÓÑ§ÉúĞÅÏ¢
+       //æ·»åŠ å­¦ç”Ÿä¿¡æ¯
        function addinfo()
        {
            createXMLHttpRequest();
-            //Í¨¹ı´Óxxx[i].firstChild.dataÖĞ»ñÈ¡ĞèÒªµÄÊı¾İ
+            //é€šè¿‡ä»xxx[i].firstChild.dataä¸­è·å–éœ€è¦çš„æ•°æ®
            var no=document.getElementById("textsno").value;
            var name=document.getElementById("textsname").value;
            var phone=document.getElementById("textsphone").value;
@@ -536,9 +536,9 @@
               XMLHttpReq.send(null); 
            }
            else 
-              alert("ÇëÊäÈëÍêÕûĞÅÏ¢");
+              alert("è¯·è¾“å…¥å®Œæ•´ä¿¡æ¯");
        }
-       //×´Ì¬ÏìÓ¦º¯Êı
+       //çŠ¶æ€å“åº”å‡½æ•°
        function addStateChange()
        {
            if(XMLHttpReq.readyState==4)
@@ -547,7 +547,7 @@
              {
                 var after_add_class=document.getElementById("textsclass").value;
                 message=XMLHttpReq.responseXML.getElementsByTagName("message");
-                //ÓÃÀ´ÌáÊ¾´íÎóĞÅÏ¢£¬µ±ÊäÈëµÄ°àºÅ²»´æÔÚÊ±£¬Ôò»áÌáĞÑ
+                //ç”¨æ¥æç¤ºé”™è¯¯ä¿¡æ¯ï¼Œå½“è¾“å…¥çš„ç­å·ä¸å­˜åœ¨æ—¶ï¼Œåˆ™ä¼šæé†’
                 if(message[0].firstChild.data!="#")
                 {
                    alert(message[0].firstChild.data);
@@ -557,10 +557,10 @@
              }
           }
        }
-       //ÏÔÊ¾ĞÅÏ¢
+       //æ˜¾ç¤ºä¿¡æ¯
        function showitems(i)
        {
-             //Í¨¹ı´Óxxx[i].firstChild.dataÖĞ»ñÈ¡ĞèÒªµÄÊı¾İ
+             //é€šè¿‡ä»xxx[i].firstChild.dataä¸­è·å–éœ€è¦çš„æ•°æ®
              var sno_nextNode=sno[i].firstChild.data;
              var sname_nextNode=sname[i].firstChild.data;
              var sphone_nextNode=sphone[i].firstChild.data;
@@ -628,7 +628,7 @@
              cell_deleteinfo=document.createElement("td");
              var deleteinfo=document.createElement("input");
              deleteinfo.setAttribute("type","button");
-             deleteinfo.setAttribute("value","É¾³ı");
+             deleteinfo.setAttribute("value","åˆ é™¤");
              deleteinfo.onclick=function(){deleteSort(i);};
              cell_deleteinfo.appendChild(deleteinfo);
              row.appendChild(cell_deleteinfo);
@@ -636,14 +636,14 @@
              cell_change=document.createElement("td");
              var change=document.createElement("input");
              change.setAttribute("type","button");
-             change.setAttribute("value","ĞŞ¸Ä");
+             change.setAttribute("value","ä¿®æ”¹");
              change.onclick=function(){before_change_showinfo(i);};
              cell_change.appendChild(change);
              row.appendChild(cell_change);
                    
              document.getElementById("sortlist").appendChild(row);
         }
-        //ÓÃÀ´ÊÇ±»Ñ¡ÖĞµÄĞĞ±äÉ«
+        //ç”¨æ¥æ˜¯è¢«é€‰ä¸­çš„è¡Œå˜è‰²
         var rows=document.getElementByTagName('tr');
         for(var i=0;i<rows.length;i++)
         {
@@ -663,13 +663,13 @@
    <div id="head">
      <table>
        <tr>
-       <td>²éÕÒ±ê×¼</td>
+       <td>æŸ¥æ‰¾æ ‡å‡†</td>
          <td>
          <select id="kind">
-          <option value="0" selected>Ñ§ºÅ </option>
-          <option value="1">ĞÕÃû </option>
-          <option value="2">°à¼¶ºÅ </option>
-          <option value="3">È«²¿ </option>
+          <option value="0" selected>å­¦å· </option>
+          <option value="1">å§“å </option>
+          <option value="2">ç­çº§å· </option>
+          <option value="3">å…¨éƒ¨ </option>
           
         </select>
          </td>
@@ -677,46 +677,46 @@
            <input type="text" id="search" />
          </td>
          <td>
-           <input type="button" onclick="search();" value="²éÕÒ">
+           <input type="button" onclick="search();" value="æŸ¥æ‰¾">
          </td>
      	
        </tr>
      </table>
-     <input type="button" value="***Ìí¼ÓÑ§Éú***" onclick="before_add_showinfo();">
+     <input type="button" value="***æ·»åŠ å­¦ç”Ÿ***" onclick="before_add_showinfo();">
    </div>
    <div id="main">
     <table class='tablelist'>
      <tr>
-          <td>Ñ§ºÅ</td>
-          <td>ĞÕÃû</td>
-          <td>µÇÂ¼ÃÜÂë</td>
-          <td>µç»°</td>
-          <td>ĞÔ±ğ</td>
-          <td>×¨Òµ</td>
-          <td>°à¼¶</td>
-          <td>Ñ§Ôº</td>
-          <td>Éí·İÖ¤ºÅ</td>
-          <td>¼®¹á</td>
-          <td>³öÉúÄêÔÂ</td>
-          <td>µç×ÓÓÊÏä</td>
-          <td>²Ù×÷</td>
-          <td>²Ù×÷</td>
+          <td>å­¦å·</td>
+          <td>å§“å</td>
+          <td>ç™»å½•å¯†ç </td>
+          <td>ç”µè¯</td>
+          <td>æ€§åˆ«</td>
+          <td>ä¸“ä¸š</td>
+          <td>ç­çº§</td>
+          <td>å­¦é™¢</td>
+          <td>èº«ä»½è¯å·</td>
+          <td>ç±è´¯</td>
+          <td>å‡ºç”Ÿå¹´æœˆ</td>
+          <td>ç”µå­é‚®ç®±</td>
+          <td>æ“ä½œ</td>
+          <td>æ“ä½œ</td>
      </tr>
      <tbody id="sortlist">
      </tbody>
     </table>
     <div id="nextpage">
-      µÚ<input type="text" id="currentpage" style="width:100%/18" readonly="true">Ò³&nbsp;&nbsp;&nbsp;
-      <input type="button" value="ÉÏÒ»Ò³" onclick="forwardpage();">&nbsp;
-      <input type="button" value="ÏÂÒ»Ò³" onclick="nextpage();">&nbsp;&nbsp;&nbsp;
-      ¹²<input type="text" id="sumpage" style="width:100%/18" readonly="true">Ò³
+      ç¬¬<input type="text" id="currentpage" style="width:100%/18" readonly="true">é¡µ&nbsp;&nbsp;&nbsp;
+      <input type="button" value="ä¸Šä¸€é¡µ" onclick="forwardpage();">&nbsp;
+      <input type="button" value="ä¸‹ä¸€é¡µ" onclick="nextpage();">&nbsp;&nbsp;&nbsp;
+      å…±<input type="text" id="sumpage" style="width:100%/18" readonly="true">é¡µ
     </div>
    </div>
     <div id="footer">
   <div id="copy">
     <div id="copyright">
       <p>CopyRight&copy;2016</p>
-      <p>Î÷°²µç×Ó¿Æ¼¼´óÑ§</p>
+      <p>è¥¿å®‰ç”µå­ç§‘æŠ€å¤§å­¦</p>
     </div>
   </div>
 </div>

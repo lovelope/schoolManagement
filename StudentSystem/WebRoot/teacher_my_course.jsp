@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%!
    String teacherno;
 %>
@@ -206,27 +206,27 @@
   
   <body>
    <div id="head" align="center">
-         <input type="button" value="╡Ия╞нр╣д©нЁл" onclick="search();">   
+         <input type="button" value="Ф÷╔Х╞╒Ф┬▒Г └Х╞╬Г╗▀" onclick="search();">   
    </div>
    <div id="main" align="center">
     <table border="1px" width="1300px" class='tablelist'>
      <tr>
-          <td align="center" width="20px">©нЁл╠Ю╨е</td>
-          <td align="center" width="20px">©нЁлцШ</td>
-          <td align="center" width="20px">я╖й╠</td>
-          <td align="center" width="20px">я╖╥ж</td>
-          <td align="center" width="20px">©╙©ня╖фз</td>
-          <td align="center" width="20px">ио©нй╠╪Д</td>
+          <td align="center" width="20px">Х╞╬Г╗▀Г╪√Е▐╥</td>
+          <td align="center" width="20px">Х╞╬Г╗▀Е░█</td>
+          <td align="center" width="20px">Е╜╕Ф≈╤</td>
+          <td align="center" width="20px">Е╜╕Е┬├</td>
+          <td align="center" width="20px">Е╪─Х╞╬Е╜╕Ф°÷</td>
+          <td align="center" width="20px">Д╦┼Х╞╬Ф≈╤И≈╢</td>
      </tr>
      <tbody id="sortlist">
      </tbody>
     </table>
    </div>
    <div id="nextpage" align="center">
-      ╣з<input type="text" id="currentpage" style="width:20px" readonly="true">рЁ&nbsp;&nbsp;&nbsp;
-      <input type="button" value="иор╩рЁ" onclick="forwardpage();">&nbsp;
-      <input type="button" value="обр╩рЁ" onclick="nextpage();">&nbsp;&nbsp;&nbsp;
-      ╧╡<input type="text" id="sumpage" style="width:20px" readonly="true">рЁ
+      Г╛╛<input type="text" id="currentpage" style="width:20px" readonly="true">И║╣&nbsp;&nbsp;&nbsp;
+      <input type="button" value="Д╦┼Д╦─И║╣" onclick="forwardpage();">&nbsp;
+      <input type="button" value="Д╦▀Д╦─И║╣" onclick="nextpage();">&nbsp;&nbsp;&nbsp;
+      Е┘╠<input type="text" id="sumpage" style="width:20px" readonly="true">И║╣
     </div>
   </body>
 </html>

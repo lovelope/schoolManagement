@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession,com.studentsystem.*" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession,com.studentsystem.*" pageEncoding="UTF-8"%>
 <%
       Connection con=null;
       DataSource ds=null;
@@ -7,7 +7,7 @@
       List<Course> MyCourseinfo=new ArrayList<Course>();
       List<Course> CanCourseinfo=new ArrayList<Course>();
 
-      //¶ÁÈ¡Êı¾İ¿âÖĞÊı¾İ
+      //è¯»å–æ•°æ®åº“ä¸­æ•°æ®
       try {
 			Context initCtx=new InitialContext();
 			Context encCtx=(Context)initCtx.lookup("java:comp/env");
@@ -19,7 +19,7 @@
 	        username=(String)session.getAttribute("userid");
 	        CallableStatement cs=null;
 	        String cas="{call course_student_sum(?, ?)}"; 
-	        //Á¬½ÓÈı¸ö±íTeacherInfo£¬TC£¬CourseInfo,ÊµÏÖ¿Î³ÌĞÅÏ¢µÄ²éÑ¯  
+	        //è¿æ¥ä¸‰ä¸ªè¡¨TeacherInfoï¼ŒTCï¼ŒCourseInfo,å®ç°è¯¾ç¨‹ä¿¡æ¯çš„æŸ¥è¯¢  
 			ps=con.prepareStatement("SELECT CourseInfo.CourseNo,CourseInfo.CourseName,CourseInfo.StudyTime,CourseInfo.Grade,CourseInfo.Term,CourseInfo.WhentoStudy,TeacherInfo.TeacherName FROM CourseInfo,TC,TeacherInfo WHERE TC.CourseNo=CourseInfo.CourseNo AND TC.TeacherNo=TeacherInfo.TeacherNo AND CourseInfo.CourseNo IN (SELECT CourseNo FROM SC WHERE StudentNo=?)");
 			ps.setString(1,username);
 			ps_cancourse=con.prepareStatement("SELECT CourseInfo.CourseNo,CourseInfo.CourseName,CourseInfo.StudyTime,CourseInfo.Grade,CourseInfo.Term,CourseInfo.WhentoStudy,TeacherInfo.TeacherName FROM CourseInfo,TC,TeacherInfo WHERE TC.CourseNo=CourseInfo.CourseNo AND TC.TeacherNo=TeacherInfo.TeacherNo AND CourseInfo.CourseNo NOT IN (SELECT CourseNo FROM SC WHERE StudentNo=?)");
@@ -36,7 +36,7 @@
 			    temp.setTerm(rs.getFloat(5));
 			    temp.setWhentoStudy(rs.getString(6));
 			    temp.setTeachername(rs.getString(7));
-			    //µ÷ÓÃ´æ´¢¹ı³ÌÀ´Í³¼ÆÄ³ÃÅ¿Î×Ü¹²µÄÈËÊı
+			    //è°ƒç”¨å­˜å‚¨è¿‡ç¨‹æ¥ç»Ÿè®¡æŸé—¨è¯¾æ€»å…±çš„äººæ•°
 			    cs= con.prepareCall(cas);
                 cs.setString(1, rs.getString(1));
                 cs.registerOutParameter(2, Types.INTEGER);
@@ -44,7 +44,7 @@
                       
                 int studentsum = cs.getInt(2);
                 temp.setStudentSum(studentsum);
-                System.out.println("Ñ¡"+rs.getString(2)+"Ñ§Éú×ÜÊıÎª"+studentsum);
+                System.out.println("é€‰"+rs.getString(2)+"å­¦ç”Ÿæ€»æ•°ä¸º"+studentsum);
 			    MyCourseinfo.add(temp);  
 			}
     
@@ -66,7 +66,7 @@
                    int studentsum = cs.getInt(2);
                    temp.setStudentSum(studentsum);
                    CanCourseinfo.add(temp); 
-                   System.out.println("Ñ¡"+rs_cancourse.getString(2)+"Ñ§Éú×ÜÊıÎª"+studentsum);  
+                   System.out.println("é€‰"+rs_cancourse.getString(2)+"å­¦ç”Ÿæ€»æ•°ä¸º"+studentsum);  
 			 }		
 			rs.close();
 			rs_cancourse.close();
@@ -89,7 +89,7 @@
 
 <html>
 <head>
-   <title>Ñ¡¿ÎĞÅÏ¢½çÃæ </title>	
+   <title>é€‰è¯¾ä¿¡æ¯ç•Œé¢ </title>	
    <link rel="stylesheet" type="text/css" href="style.css" />
    	<style type="text/css">
    	#mainwrapper 
@@ -124,9 +124,9 @@
 	   <div id="mainwrapper">
 	   	  <div id="sidebar">
 	   	  	<ul>
-	   	  	<!--×¢ÒâiframeÀïµÄidºÍnameÒªÏàÍ¬£¬ÇÒÇ¶Ì×µÄhtmlµÄiframeµÄid±ØĞë²»Í¬ -->
-	   	  		<li><a href="Course.jsp" target="show_class" ><span>Ñ¡¿Î½á¹û </span> </a>
-	   	  		<li><a href="Course_select.jsp" target="show_class">½øĞĞÑ¡¿Î</a></li>
+	   	  	<!--æ³¨æ„iframeé‡Œçš„idå’Œnameè¦ç›¸åŒï¼Œä¸”åµŒå¥—çš„htmlçš„iframeçš„idå¿…é¡»ä¸åŒ -->
+	   	  		<li><a href="Course.jsp" target="show_class" ><span>é€‰è¯¾ç»“æœ </span> </a>
+	   	  		<li><a href="Course_select.jsp" target="show_class">è¿›è¡Œé€‰è¯¾</a></li>
 	   	  	</ul>
 	   	  </div>
 	     <div id="content">
@@ -137,7 +137,7 @@
     	<div id="copy">
 		   <div id="copyright">
 			 <p>CopyRight&copy;2016</p>
-			 <p>Î÷°²µç×Ó¿Æ¼¼´óÑ§</p>
+			 <p>è¥¿å®‰ç”µå­ç§‘æŠ€å¤§å­¦</p>
 			</div>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*,java.sql.*,javax.sql.*,javax.naming.*,javax.servlet.http.HttpSession" pageEncoding="UTF-8"%>
 <%! String StudentNo;
     String Name;
     String CardNo;
@@ -31,44 +31,44 @@
 
 <html>
   <body>
-       <h2>&nbsp;&nbsp;&nbsp;ѧ��������Ϣ</h2> <br>
+       <h2>&nbsp;&nbsp;&nbsp;学生个人信息</h2> <br>
     <table border=1>
       <tr>
-       	<td>ѧ�ţ�</td>
+       	<td>学号：</td>
        	<td><%=StudentNo%></td>
-       	<td>������</td>
+       	<td>姓名：</td>
        	<td><%=Name%></td>
       </tr>
       <tr>
-       	<td>����֤�ţ�</td>
+       	<td>身份证号：</td>
        	<td><%=CardNo%></td>
-       	<td>ʡ�ݣ�</td>
+       	<td>省份：</td>
        	<td><%=Prince%></td>
       </tr>
       <tr>
-       	<td>�Ա�</td>
+       	<td>性别：</td>
        	<td><%=sex%></td>
-       	<td>��������</td>
+       	<td>出生年月</td>
        	<td><%=birthday%></td>
       </tr>
       <tr>
-       	<td>��ϵ�绰��</td>
+       	<td>联系电话：</td>
        	<td><%=phone%></td>
-       	<td>רҵ��</td>
+       	<td>专业：</td>
        	<td><%=subject%></td>
       </tr>
       <tr>
-       	<td>�༶��</td>
+       	<td>班级：</td>
        	<td><%=classnumber%></td>
-       	<td>�������䣺</td>
+       	<td>电子邮箱：</td>
        	<td><%=Email%></td>
       </tr>
        <tr>
-       	<td>ѧԺ��</td>
+       	<td>学院：</td>
        	<td><%=Academy%></td>
       </tr>
       <tr>
-        <td>��Ƭ</td>
+        <td>照片</td>
         <td><img src=<%=Photo%>></td>
       </tr>
     </table>

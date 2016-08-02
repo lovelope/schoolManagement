@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%!
    String username;
 %>
@@ -7,7 +7,7 @@
 %>
 <html>
 <head>
-   <title>Ñ§ÉúĞÅÏ¢½çÃæ </title>
+   <title>å­¦ç”Ÿä¿¡æ¯ç•Œé¢ </title>
    <link rel="stylesheet" type="text/css" href="style.css" />
    	<style type="text/css">
 		#main
@@ -28,19 +28,19 @@
 		<script language="javascript">
 		 function displayTime()
 		 {
-		    var vw = new Array("ĞÇÆÚÌì","ĞÇÆÚÒ»","ĞÇÆÚ¶ş","ĞÇÆÚÈı","ĞÇÆÚËÄ","ĞÇÆÚÎå","ĞÇÆÚÁù");     
+		    var vw = new Array("æ˜ŸæœŸå¤©","æ˜ŸæœŸä¸€","æ˜ŸæœŸäºŒ","æ˜ŸæœŸä¸‰","æ˜ŸæœŸå››","æ˜ŸæœŸäº”","æ˜ŸæœŸå…­");     
 		    var today=new Date();  
 		    var day = today.getDate(); 
-		    var month = today.getMonth() + 1;  //»ñÈ¡ÔÂ·İ
-            var year = today.getFullYear();   //»ñÈ¡Äê·İ
-            var week = today.getDay();       //»ñÈ¡ĞÇÆÚÊı     
+		    var month = today.getMonth() + 1;  //è·å–æœˆä»½
+            var year = today.getFullYear();   //è·å–å¹´ä»½
+            var week = today.getDay();       //è·å–æ˜ŸæœŸæ•°     
 		    var hours=today.getHours();         
 		    var minutes=today.getMinutes();
 		    var seconds=today.getSeconds();         
 		    minutes=fixTime(minutes);        
 		    seconds=fixTime(seconds);
 		    var current_time=hours+":"+minutes+":"+seconds;
-		    var year_month=year+ "Äê" + month + "ÔÂ"+day+"ÈÕ"+vw[week];
+		    var year_month=year+ "å¹´" + month + "æœˆ"+day+"æ—¥"+vw[week];
 		    document.all.showTime.value=current_time;
 		    document.all.showyearmonth.value=year_month;
 		    the_timeout=setTimeout('displayTime();',500);    
@@ -51,7 +51,7 @@
 		     the_time="0"+the_time;          
 		   }          
 		   return the_time;     
-		   }//ĞŞ¶©Ê±¼äÏÔÊ¾  
+		   }//ä¿®è®¢æ—¶é—´æ˜¾ç¤º  
 		   function move(image,num)
 		   {
 		     image.src='../images/menu'+num+'.jpg';
@@ -68,24 +68,24 @@
 
 	<div id="head" >
 	    <div id="time" name="mytime">
-	       µ±Ç°Ê±¼ä£º<br>
+	       å½“å‰æ—¶é—´ï¼š<br>
 	       <p><input type="text" name="showyearmonth" style="border:0px;background:rgba(0, 0, 0, 0); "></p>
 	      <input type="text" name="showTime" style="border:0px;background:rgba(0, 0, 0, 0); ">
 	    </div>
 	    <div id="status">
 	      <form action="Studentservlet" method="post">
-	      	ÓÃ»§Ãû£º<%=username%>
+	      	ç”¨æˆ·åï¼š<%=username%>
 	        <input type="hidden" name="item" value="exit">
-	        <input type="submit" name="submit" value="×¢Ïú">
+	        <input type="submit" name="submit" value="æ³¨é”€">
 	      </form>
         </div>
         <div id="menu">
 	        <h2>Welcome to Student System!</h2>
 
-	         <a href="index.jsp" >Ê×Ò³</a>
-	         <a href="StudentInfo.jsp" target="show" ><span>¸öÈËĞÅÏ¢</span></a>
-	         <a href="CourseInfo.jsp" target="show"><span>Ñ¡¿Î²éÑ¯ </span></a>
-	         <a href="GradeInfo.jsp" target="show"><span>³É¼¨²éÑ¯ </span></a>
+	         <a href="index.jsp" >é¦–é¡µ</a>
+	         <a href="StudentInfo.jsp" target="show" ><span>ä¸ªäººä¿¡æ¯</span></a>
+	         <a href="CourseInfo.jsp" target="show"><span>é€‰è¯¾æŸ¥è¯¢ </span></a>
+	         <a href="GradeInfo.jsp" target="show"><span>æˆç»©æŸ¥è¯¢ </span></a>
 
 	    </div>
     </div>
@@ -97,7 +97,7 @@
     	<div id="copy">
 		   <div id="copyright">
 			 <p>CopyRight&copy;2016</p>
-			 <p>Î÷°²µç×Ó¿Æ¼¼´óÑ§</p>
+			 <p>è¥¿å®‰ç”µå­ç§‘æŠ€å¤§å­¦</p>
 			</div>
 		</div>
 	</div>

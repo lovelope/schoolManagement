@@ -1,6 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-String message=(String)session.getAttribute("message");//messageÀ´ÏÔÊ¾µÇÂ¼Ê§°ÜĞÅÏ¢
+String message=(String)session.getAttribute("message");//messageæ¥æ˜¾ç¤ºç™»å½•å¤±è´¥ä¿¡æ¯
 if(message!=null)
 {
 %>
@@ -15,10 +15,10 @@ session.removeAttribute("message");
 
 <html>
 <head>
-   <title>Ñ§¼®¹ÜÀíÏµÍ³µÇÂ¼½çÃæ </title>	
+   <title>å­¦ç±ç®¡ç†ç³»ç»Ÿç™»å½•ç•Œé¢ </title>	
    <link rel="stylesheet" type="text/css" href="style.css" />
    <script type="text/JavaScript">
-   	/*ÅĞ¶ÏÊÇ·ñÎªÊı×Ö*/
+   	/*åˆ¤æ–­æ˜¯å¦ä¸ºæ•°å­—*/
    	function isNumber(str)
    	{
    		var Letters="01234567889";
@@ -30,23 +30,23 @@ session.removeAttribute("message");
    		}
    		return true;
    	}
-   	/*ÅĞ¶ÏÊÇ·ñÎª¿Õ*/
+   	/*åˆ¤æ–­æ˜¯å¦ä¸ºç©º*/
    	function isEmpty(value)
    	{
    		return /^\s*$/.test(value);
    	}
-   	/*¼ì²éÊäÈëÓÃ»§Ãû¼°ÃÜÂëÊÇ·ñÎª¿Õ*/
+   	/*æ£€æŸ¥è¾“å…¥ç”¨æˆ·ååŠå¯†ç æ˜¯å¦ä¸ºç©º*/
    	function check()
    	{
    	  if(isEmpty(document.myForm.UserID.value))
    	  {
-   	  	alert("µÇÂ¼Ãû²»ÄÜÎª¿Õ");
+   	  	alert("ç™»å½•åä¸èƒ½ä¸ºç©º");
    	  	document.myForm.loginName.focus();
    	  	return false;
    	  }	
    	  if(isEmpty(document.myForm.UserPWD.value))
    	  {
-   	    alert("ÃÜÂë²»ÄÜÎª¿Õ");
+   	    alert("å¯†ç ä¸èƒ½ä¸ºç©º");
    	    document.myForm.password.focus();
    	    return false;	
    	  }
@@ -55,7 +55,7 @@ session.removeAttribute("message");
    	  	 return true;
    	  }
    	}
-   	//·ÀÖ¹°´ÏÂbackspace·µ»Ø×¢ÏúÖ®Ç°µÄ½çÃæ
+   	//é˜²æ­¢æŒ‰ä¸‹backspaceè¿”å›æ³¨é”€ä¹‹å‰çš„ç•Œé¢
     window.onload=function(){  
     
     document.getElementsByTagName("body")[0].onkeydown =function(){  
@@ -111,34 +111,34 @@ session.removeAttribute("message");
 
 <body background="background.jpg" align="center">
 	<div align="center" id="main">
-	<marquee behavior="alternate" direction="left">---------»¶Ó­Ê¹ÓÃÑ§¼®¹ÜÀíÏµÍ³--------</marquee>
+	<marquee behavior="alternate" direction="left">---------æ¬¢è¿ä½¿ç”¨å­¦ç±ç®¡ç†ç³»ç»Ÿ--------</marquee>
     <form action="sqltest" method="post" id="myForm">
-     <h2>ÓÃ»§µÇÂ¼<h2/>
+     <h2>ç”¨æˆ·ç™»å½•<h2/>
      <table>
        <tr>&nbsp;</tr>
       <tr>
-       	<td>ÓÃ»§Ãû£º</td>
+       	<td>ç”¨æˆ·åï¼š</td>
        	<td><input type="text" size="20" name="UserID" id="UserID" class="border-radius"></td>
       </tr>
       <tr>
-      	<td>ÃÜÂë£º</td>
+      	<td>å¯†ç ï¼š</td>
       	<td><input type="password" size="20" name="UserPWD" id="UserPWD" class="border-radius"></td>
       </tr>
       
       <tr>
-      	<td>Éí·İ£º</td>
+      	<td>èº«ä»½ï¼š</td>
       	<td>
          <select name="Kind">
-     	    <option value="0" selected>¹ÜÀíÔ± </option>
-     	    <option value="1">½ÌÊ¦ </option>
-     	    <option value="2">Ñ§Éú </option>
+     	    <option value="0" selected>ç®¡ç†å‘˜ </option>
+     	    <option value="1">æ•™å¸ˆ </option>
+     	    <option value="2">å­¦ç”Ÿ </option>
      	   </select>
      	  </td>
      	</tr>
 
      <tr>
-     	<td><input type="submit" value="Ìá½»" onClick="return check();" id="submit" class="border-radius"></td>
-     	<td><input type="reset" value="ÖØÖÃ" class="border-radius"></td>
+     	<td><input type="submit" value="æäº¤" onClick="return check();" id="submit" class="border-radius"></td>
+     	<td><input type="reset" value="é‡ç½®" class="border-radius"></td>
      </tr>
 
     </table>
@@ -148,7 +148,7 @@ session.removeAttribute("message");
 	<div id="copy">
 		<div id="copyright">
 			<p>CopyRight&copy;2016</p>
-			<p>Î÷°²µç×Ó¿Æ¼¼´óÑ§</p>
+			<p>è¥¿å®‰ç”µå­ç§‘æŠ€å¤§å­¦</p>
 			</div>
 		</div>
 	</div>
