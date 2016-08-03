@@ -23,7 +23,7 @@
 主要功能包括setxxx，getxxx方法，用来保存信息和提取信息。  
 还有TestDB.java用来处理数据库的相关操作.  
 
-![servlet](servlet.png)
+![servlet](desc/servlet.png)
 
 ![view](desc/view.png)  
 - 映射关系（Servlet逻辑事务处理和前端显示的对应关系）  
